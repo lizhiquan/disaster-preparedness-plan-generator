@@ -20,6 +20,18 @@
     <form action="" method="post">
       <input class="input" type="text" name="fullname" id="fullname" placeholder="Full name" required>
       <input class="input" type="text" name="postalCode" id="postalCode" placeholder="VXX XXX" required>
+      <label for="familySize">Family Size</label>
+      <input class="input" type="range" value="1" name="familySize" id="familySize" min="1" max="9">
+      <p>Are you currently taking any medication?</p>
+      <label for="medicationYes">Yes</label>
+      <input type="radio" name="medication" id="medicationYes" value="yes">
+      <label for="medicationNo">No</label>
+      <input type="radio" name="medication" id="medicationNo" value="no" checked>
+      <p>Are you experiencing any mobility issues?</p>
+      <label for="mobilityYes">Yes</label>
+      <input type="radio" name="mobility" id="mobilityYes" value="yes">
+      <label for="mobilityNo">No</label>
+      <input type="radio" name="mobility" id="mobilityNo" value="no" checked>
       <input type="submit" value="Submit" class="button button-primary button-block button-shadow">
     </form>
   </main>
