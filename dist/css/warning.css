@@ -6,8 +6,12 @@ html body{
 body {
 	width: 70vw;
 	height: 50vh;
+}
+
+.warningMessage{
 	border: 1px solid black;
 	border-radius: 25pt;
+	padding: 10pt;
 }
 
 .warningContainer {
