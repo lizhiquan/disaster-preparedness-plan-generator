@@ -1,0 +1,20 @@
+html body{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 70vw;
+	height: 50vh;
+	border: 1px solid black;
+	border-radius: 25pt;
+}
+
+.warningContainer {
+	margin-left: 10pt;
+}
+
+.buttonContainer{
+	display: flex;
+	justify-content: space-around;
+}
