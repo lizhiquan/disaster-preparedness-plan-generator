@@ -13,7 +13,7 @@
 	   <p>Recieving push notifications</p>
 	  </div>
 	  <div class="buttonContainer">
-		<button type="button" clas="button">Login</button>
+		<button type="button" class="button">Login</button>
 		<button type="button" class="button">Proceed</button>
 	  </div>
 	</div>
@@ -25,6 +25,11 @@
 				
 				$(".warningMessage").mouseout(function(){
 					$(".warningMessage").css("borderColor", "black")
+				})
+			})
+			$(".button").click(function(){
+				$(".warningMessage").fadeOut(1000, function(){
+					
 				})
 			})
 		});
