@@ -13,9 +13,27 @@
 			<p>Notify you on possible actions to take during a disaster</p>
 		</div>
 		<div class=buttonContainer>
-			<button type="button">No</button>
-			<button typ="button">Yes</button>
+			<button type="button" class="button">No</button>
+			<button typ="button" class="button">Yes</button>
 		</div>
 	</div>
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(".warningMessage").mouseover(function(){
+				$(".warningMessage").css("borderColor", "red")
+				
+				$(".warningMessage").mouseout(function(){
+					$(".warningMessage").css("borderColor", "black")
+				})
+			})
+			$(".button").click(function(){
+				$(".warningMessage").fadeOut(1000, function(){
+					
+				})
+			})
+		});
+		
+	</script>
   </body>
 </html>
