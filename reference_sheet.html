@@ -4,9 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./dist/css/main.css">
+  <link rel="stylesheet" href="./dist/css/form.css">
   <title>Reference sheet</title>
 </head>
 <body>
-  <h1>This is the generated reference sheet page.</h1>
+<header>
+    <nav class="nav justify-content-end">
+      <a class="nav-link active" href="#home">Home</a>
+      <a class="nav-link" href="#logout">Logout</a>
+    </nav>
+  </header>
+  <div class="outputmain">
+    <iframe class="referenceSheet" src="emergency_kit_checklist.pdf"></iframe>
+    <div class="outputactions-container">
+      <div class="outputactions-child"><button>Download As...</button></div>
+      <div class="outputactions-child"><button>Save for Later</button></div>
+      <div class="outputactions-child"><button>Modify Inputs</button></div>
+    </div>
+  </div>
 </body>
 </html>
