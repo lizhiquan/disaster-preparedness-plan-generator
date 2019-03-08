@@ -11,6 +11,3 @@ body {
 .footer {
   flex-shrink: 0;
 }
-header {
-  z-index: -1;
-}
