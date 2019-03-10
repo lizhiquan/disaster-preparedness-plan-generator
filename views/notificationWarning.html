@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+		<link rel="stylesheet" href="../css/warning.css">
+  </head>
+  <body>
+		<div class="warningMessage">
+			<div class="warningContainer">
+				<h1>Would you like to recieve notifications?</h1>
+				<h2>Notifications can:</h2>
+				<p>Notify you when you need to update your emergency survival kit</p>
+				<p>Notify you on possible actions to take during a disaster</p>
+			</div>
+			<div class=buttonContainer>
+				<button type="button" class="button">No</button>
+				<button typ="button" class="button">Yes</button>
+			</div>
+		</div>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".warningMessage").mouseover(function(){
+					$(".warningMessage").css("borderColor", "red")
+					
+					$(".warningMessage").mouseout(function(){
+						$(".warningMessage").css("borderColor", "black")
+					})
+				})
+				$(".button").click(function(){
+					$(".warningMessage").fadeOut(1000, function(){
+						
+					})
+				})
+			});
+		</script>
+  </body>
+</html>
