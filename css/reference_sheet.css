@@ -1,0 +1,31 @@
+html, body {
+  height: 100%;
+}
+
+.referenceSheet {
+  width: 70%;
+  height: 100%;
+  /* border: 1px solid black; */
+}
+
+.outputmain {
+  height: 100%;
+  display: flex;
+  /* border: 1px solid black; */
+}
+
+.outputactions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40%;
+  margin: auto;
+  /* border: 1px solid black; */
+}
+
+.outputactions-child {
+  justify-content: space-between;
+  height: 40%;
+  margin: auto;
+  /* border: 1px solid black; */
+}
