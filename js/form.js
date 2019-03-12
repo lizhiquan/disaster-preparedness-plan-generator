@@ -17,3 +17,19 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
+$("#logout").click(function (e) { 
+    e.preventDefault();
+    logout();
+    return false;
+});
+
+function logout() {
+    firebase.auth().signOut()
+        .then(function() {
+            // Sign-out successful.
+        })
+        .catch(function(error) {
+            // An error happened
+            console.log(error);
+        });
+}
