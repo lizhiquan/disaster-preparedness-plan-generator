@@ -7,8 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Disaster Prevention Generator</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|Roboto:500" rel="stylesheet">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="./css/template.css">
+  <link rel="stylesheet" href="./css/index.css">
+
   <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+  <!-- Config -->
+  <script src="./js/secret.js"></script>
 </head>
 
 <body class="is-boxed has-animations">
@@ -55,7 +65,7 @@
             <h1 class="hero-title h2-mobile mt-0 is-revealing">Disaster Prevention Generator</h1>
             <p class="hero-paragraph is-revealing">Our landing page template works for all the devices, so you only have
               to setup it once, and get beautiful results forever.</p>
-            <a class="button button-primary button-shadow" href="./views/form.html">Get started</a>
+            <a class="button button-primary button-shadow" id="getStarted">Get started</a>
             <div class="hero-browser">
               <div class="bubble-3 is-revealing">
                 <svg width="427" height="286" viewBox="0 0 427 286" xmlns="http://www.w3.org/2000/svg"
@@ -386,7 +396,21 @@
     </footer>
   </div>
 
-  <script src="./js/index.min.js"></script>
+  <div id="loginDialogContainer">
+    <div id="loginDialog">
+      <h4>Warning!</h4>
+      <h5>By logging in as guest, you cannot access certain features including:</h5>
+      <ul>
+        <li>Saving a copy of the generated PDF</li>
+        <li>Receiving push notifications</li>
+      </ul>
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+    </div>
+  </div>
+
+  <script src="./js/template.min.js"></script>
+  <script src="./js/index.js"></script>
 </body>
 
 </html>
