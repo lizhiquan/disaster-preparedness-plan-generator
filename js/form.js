@@ -1,7 +1,8 @@
 var submitButton = document.getElementById("submit");
 submitButton.addEventListener("click", function () {
-  window.location.href = "../views/reference_sheet.html";
-})
+    saveFormData();
+    window.location.href = "../views/reference_sheet.html";
+});
 
 firebase.initializeApp(firebaseConfig);
 
@@ -38,4 +39,21 @@ function logout() {
             // An error happened
             console.log(error);
         });
+}
+
+function saveFormData() {
+    var fullname = $("#fullname").val();
+    var postalCode = $("#postalCode").val();
+    var familySize = $("#familySize").val();
+    var children = $("#children").val();
+    var medication = $("input[name=medication]:checked").val();
+    var mobility = $("input[name=mobility]:checked").val();
+    
+    var storage = window.localStorage;
+    storage.setItem("fullname", fullname);
+    storage.setItem("postalCode", postalCode);
+    storage.setItem("familySize", familySize);
+    storage.setItem("children", children);
+    storage.setItem("medication", medication);
+    storage.setItem("mobility", mobility);
 }
