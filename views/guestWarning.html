@@ -13,8 +13,8 @@
 			<p>Recieving push notifications</p>
 			</div>
 			<div class="buttonContainer">
-			<button type="button" class="button">Login</button>
-			<button type="button" class="button">Proceed</button>
+			<button type="button" id="buttonLogin">Login</button>
+			<button type="button" id="buttonProceed">Proceed</button>
 			</div>
 		</div>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -27,9 +27,15 @@
 						$(".warningMessage").css("borderColor", "black")
 					})
 				})
-				$(".button").click(function(){
+				$("#buttonLogin").click(function(){
 					$(".warningMessage").fadeOut(1000, function(){
-						
+					   window.location.href = "../index.html";
+					})
+				})
+              
+               $("#buttonProceed").click(function(){
+					$(".warningMessage").fadeOut(1000, function(){
+					   window.location.href = "../views/form.html";
 					})
 				})
 			});
