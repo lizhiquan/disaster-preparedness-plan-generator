@@ -1,7 +1,9 @@
 var submitButton = document.getElementById("submit");
+var notificationDialog = document.getElementById("notificationDialogContainer");
+
 submitButton.addEventListener("click", function () {
     saveFormData();
-    window.location.href = "../views/reference-sheet.html";
+    notificationDialog.style.display = "block";
 });
 
 firebase.initializeApp(firebaseConfig);
