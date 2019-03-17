@@ -1,3 +1,9 @@
+var buttonModify = document.getElementById("buttonModify");
+
+buttonModify.addEventListener("click", function() {
+  document.location.href = "../views/form.html";
+});
+
 function generatePDF() {
     var storage = window.localStorage;
 
