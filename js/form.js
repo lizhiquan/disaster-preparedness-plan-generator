@@ -1,10 +1,15 @@
 var submitButton = document.getElementById("submit");
 var notificationDialog = document.getElementById("notificationDialogContainer");
+var buttonHome = document.getElementById("buttonHome");
 
 submitButton.addEventListener("click", function () {
     saveFormData();
     notificationDialog.style.display = "block";
 });
+
+buttonHome.addEventListener("click", function() {
+  document.location.href = "../index.html";
+})
 
 firebase.initializeApp(firebaseConfig);
 

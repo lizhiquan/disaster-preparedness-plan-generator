@@ -4,6 +4,12 @@ buttonModify.addEventListener("click", function() {
   document.location.href = "../views/form.html";
 });
 
+var buttonHome = document.getElementById("buttonHome");
+
+buttonHome.addEventListener("click", function() {
+  document.location.href = "../index.html";
+})
+
 function generatePDF() {
     var storage = window.localStorage;
 
