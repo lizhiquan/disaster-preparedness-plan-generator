@@ -1,10 +1,11 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head lang="en">
     <meta charset="utf-8">
     <title>Settings</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/settings.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   </head>
   <body>
     <header>
@@ -15,24 +16,67 @@
         <a class="nav-link" id="logout" href="#">Logout</a>
       </nav>
     </header>
-    <div id="settings">
-      <div id="notificationContainer">
-        <form>
-          <input type="text" placeholder="Medication">
-          <input type="text" placeholder="date">
-          <input type="submit" value="Edit">
-        </form>
+    <div id="inputHead">
+      <div id="itemNameHead" class="col1">Item Name</div>
+      <div id="itemTypeHead" class="col2">Item Type</div>
+      <div id="dateAddedHead" class="col3">Date Added</div>
+      <div id="expireDateHead" class="col4">Expiry Date</div>
+      <div id="empty" class="col5"></div>
+    </div>
+
+    <div id="setForm">
+      <div class="col1"><input type="text" name="itemName" placeholder="Enter Item Name" id="itemName"></div>
+      <div class="col2">
+          <select name="type" id="itemType">
+              <option value="Nutrition">Nutrition</option>
+              <option value="Medicine">Medicine</option>
+          </select>
+      </div>            
+      <div class="col3"><input type="date" name="dateAdded" id="dateAdded"></div> 
+      <div class="col4"><input type="date" name="expireDate" id="expireDate"></div> 
+      <div id="submit" class="col5"><input type="submit" value="Add Item" onclick="addItem()"></div> 
+    </div>
+
+    <div id="tableContainer">
+      <div id="tableTitle">---------------------------------------- <em>Active Reminders</em> ---------------------------------------- </div>
+      <div id="mainTable">
       </div>
-      <div id="toggleContainer">
+
+    </div>
+
+      <!-- <div id="toggleContainer">
         <p>Notifications</p>
         <label class="switch">
           <input type="checkbox">
           <span class="slider round"></span>
         </label>
-      </div>
-    </div>
+      </div> -->
     
     <script src="../js/settings.js"></script>
+    <script>
+    
+    function addItem() {
+      var itemName = document.getElementById("itemName").value;
+      var itemType = document.getElementById("itemType").value;
+      var dateAdded = document.getElementById("dateAdded").value;
+      var expireDate = document.getElementById("expireDate").value;
+
+      var table = $("<table>").appendTo("#mainTable").addClass("tables");
+      var tbody = table.append("<tbody></tbody>");
+      var newRow = tbody.append("<tr></tr>");
+
+      var i1 = $("<td></td>").html(itemName).addClass("col1");
+      var i2 = $("<td></td>").html(itemType).addClass("col2");
+      var i3 = $("<td></td>").html(dateAdded).addClass("col3");
+      var i4 = $("<td></td>").html(expireDate).addClass("col4");
+
+      newRow.append(i1,i2,i3,i4);
+
+    }
+
+
+
+      </script>
     
   </body>
 
