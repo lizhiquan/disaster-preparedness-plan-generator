@@ -20,7 +20,3 @@ function generatePDF() {
     var medication = storage.getItem("medication");
     var mobility = storage.getItem("mobility");
 }
-
-$(document).ready(function(){
-  $( "#tabContainer" ).tabs();
-});

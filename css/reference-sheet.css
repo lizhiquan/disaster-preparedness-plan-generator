@@ -2,25 +2,26 @@ html, body {
   height: 100%;
 }
 
-
-#tabContainer{
-  border: none;
+#formContainer {
+  flex-basis: 60%;
+  height: 100%;
 }
 
-#formContainer {
-  flex-basis: 70%;
-  height: 100%;
+#myTabContent {
+  height:100%;
 }
 
 .referenceSheet {
   width: 100%;
   height: 100%;
-  /* border: 1px solid black; */
+   border: 1px solid black; 
 }
 
 .outputmain {
+  width: 100%;
   height: 100%;
   display: flex;
+  justify-content: space-around;
   /* border: 1px solid black; */
 }
 
@@ -34,7 +35,6 @@ html, body {
 }
 
 .outputactions-child {
-  justify-content: space-between;
   height: 40%;
   margin: auto;
   /* border: 1px solid black; */
