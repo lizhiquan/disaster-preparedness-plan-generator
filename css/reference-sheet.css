@@ -39,3 +39,7 @@ html, body {
   margin: auto;
   /* border: 1px solid black; */
 }
+
+#setting, #login, #logout {
+  display: none;
+}

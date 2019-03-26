@@ -37,11 +37,13 @@ firebase.auth().onAuthStateChanged(function (user) {
         // User is signed in.
         $("#login").css("display", "none");
         $("#logout").css("display", "inline");
+        $("#setting").css("display", "inline");
         fetchFormData(user.uid);
     } else {
         // No user is signed in.
         $("#login").css("display", "inline");
         $("#logout").css("display", "none");
+        $("#setting").css("display", "none");
     }
 });
 

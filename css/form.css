@@ -2,6 +2,9 @@
     display: none;
 }
 
+#setting, #login, #logout {
+  display: none;
+}
 
 /**CSS for the notificationDialog*/
 #notificationDialogContainer {

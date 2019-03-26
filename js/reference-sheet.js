@@ -1,3 +1,6 @@
+// Initialize firebase
+firebase.initializeApp(firebaseConfig);
+
 var buttonModify = document.getElementById("buttonModify");
 
 buttonModify.addEventListener("click", function () {
@@ -9,6 +12,22 @@ var buttonHome = document.getElementById("buttonHome");
 buttonHome.addEventListener("click", function () {
     document.location.href = "../index.html";
 })
+
+// Observe user auth state
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user && !user.isAnonymous) {
+        // User is signed in.
+        $("#login").css("display", "none");
+        $("#logout").css("display", "inline");
+        $("#setting").css("display", "inline");
+    } else {
+        // No user is signed in.
+        $("#login").css("display", "inline");
+        $("#logout").css("display", "none");
+        $("#setting").css("display", "none");
+        generatePDF(getFormDataFromLocalStorage());
+    }
+});
 
 function getFormDataFromLocalStorage() {
     var storage = window.localStorage;
@@ -33,5 +52,3 @@ function generatePDF(formData) {
     var pdfBlob = doc.output('blob', 'DPPG.pdf');
     $('#tab-1').attr('src', URL.createObjectURL(pdfBlob));
 }
-
-generatePDF(getFormDataFromLocalStorage());
