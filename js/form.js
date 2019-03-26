@@ -37,7 +37,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         // User is signed in.
         $("#login").css("display", "none");
         $("#logout").css("display", "inline");
-        console.log(user);
+        fetchFormData(user.uid);
     } else {
         // No user is signed in.
         $("#login").css("display", "inline");
@@ -86,4 +86,21 @@ function saveFormDataToFirebaseDb(formData, userId) {
     let updates = {};
     updates['/forms/' + userId] = formData;
     return firebase.database().ref().update(updates);
+}
+
+function fetchFormData(userId) {
+    let dbRef = firebase.database().ref('forms/' + userId);
+    dbRef.once('value', (snap) => {
+        let formData = snap.val();
+        updateHtmlFormValues(formData);
+    });
+}
+
+function updateHtmlFormValues(formData) {
+    $("#fullname").val(formData.fullname);
+    $("#postalCode").val(formData.postalCode);
+    $("#familySize").val(formData.familySize);
+    $("#children").val(formData.children);
+    $("#medicationYes").prop('checked', formData.medication == 'yes');
+    $("#mobilityYes").prop('checked', formData.mobility == 'yes');
 }
