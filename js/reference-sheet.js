@@ -1,17 +1,19 @@
 // Initialize firebase
 firebase.initializeApp(firebaseConfig);
 
-var buttonModify = document.getElementById("buttonModify");
-
-buttonModify.addEventListener("click", function () {
+// Handle modify button's click event
+$("#buttonModify").click(function (e) { 
+    e.preventDefault();
     document.location.href = "../views/form.html";
+    return false;
 });
 
-var buttonHome = document.getElementById("buttonHome");
-
-buttonHome.addEventListener("click", function () {
+// Handle home button's click event
+$("#buttonHome").click(function (e) { 
+    e.preventDefault();
     document.location.href = "../index.html";
-})
+    return false;
+});
 
 // Observe user auth state
 firebase.auth().onAuthStateChanged(function (user) {
