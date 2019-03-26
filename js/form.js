@@ -4,7 +4,14 @@ firebase.initializeApp(firebaseConfig);
 // Handle submit button's click event
 $("#submit").click(function (e) { 
     e.preventDefault();
-    saveFormData();
+    
+    let userId = getUserId();
+    if (userId != null) {
+        saveFormDataToFirebaseDb(getFormData(), userId);
+    } else {
+        saveFormDataToLocalStorage(getFormData());
+    }
+
     var notificationDialog = document.getElementById("notificationDialogContainer");
     notificationDialog.style.display = "block";
     return false;
@@ -49,19 +56,34 @@ function logout() {
         });
 }
 
-function saveFormData() {
-    var fullname = $("#fullname").val();
-    var postalCode = $("#postalCode").val();
-    var familySize = $("#familySize").val();
-    var children = $("#children").val();
-    var medication = $("input[name=medication]:checked").val();
-    var mobility = $("input[name=mobility]:checked").val();
-    
+function getFormData() {
+    return {
+        fullname: $("#fullname").val(),
+        postalCode: $("#postalCode").val(),
+        familySize: $("#familySize").val(),
+        children: $("#children").val(),
+        medication: $("input[name=medication]:checked").val(),
+        mobility: $("input[name=mobility]:checked").val()
+    };
+}
+
+function getUserId() {
+    let user = firebase.auth().currentUser;
+    return (user && !user.isAnonymous) ? user.uid : null;
+}
+
+function saveFormDataToLocalStorage(formData) {
     var storage = window.localStorage;
-    storage.setItem("fullname", fullname);
-    storage.setItem("postalCode", postalCode);
-    storage.setItem("familySize", familySize);
-    storage.setItem("children", children);
-    storage.setItem("medication", medication);
-    storage.setItem("mobility", mobility);
+    for (let key in formData) {
+        storage.setItem(key, formData[key]);
+    }
+}
+
+function saveFormDataToFirebaseDb(formData, userId) {
+    if (userId == null) {
+        return;
+    }
+    let updates = {};
+    updates['/forms/' + userId] = formData;
+    return firebase.database().ref().update(updates);
 }
