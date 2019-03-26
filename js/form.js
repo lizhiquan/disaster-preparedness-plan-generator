@@ -31,6 +31,48 @@ $("#logout").click(function (e) {
     return false;
 });
 
+// Handle login button's click event
+$("#login").click(function (e) { 
+    e.preventDefault();
+    $("#loginDialogContainer").css("display", "block");
+    document.body.style.overflow = "hidden";
+    return false;
+});
+
+// Handle close login dialog button's click event
+$("#closeLoginDialog").click(function (e) { 
+    e.preventDefault();
+    closeLoginDialog();
+    return false;
+});
+
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+var uiConfig = {
+    callbacks: {
+        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+            closeLoginDialog();
+            return false;
+        },
+        uiShown: function() {
+            // The widget is rendered.
+            // Hide the loader.
+            document.getElementById('loader').style.display = 'none';
+        }
+    },
+    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+    signInFlow: 'popup',
+    signInSuccessUrl: '#',
+    signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    // Terms of service url.
+    tosUrl: '#',
+    // Privacy policy url.
+    privacyPolicyUrl: '#'
+};
+
+ui.start('#firebaseui-auth-container', uiConfig);
+
 // Observe user auth state
 firebase.auth().onAuthStateChanged(function (user) {
     if (user && !user.isAnonymous) {
@@ -46,6 +88,11 @@ firebase.auth().onAuthStateChanged(function (user) {
         $("#setting").css("display", "none");
     }
 });
+
+function closeLoginDialog() {
+    $("#loginDialogContainer").css("display", "none");
+    document.body.style.overflow = "auto";
+}
 
 function logout() {
     firebase.auth().signOut()

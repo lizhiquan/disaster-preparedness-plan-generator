@@ -11,10 +11,13 @@
   <link rel="stylesheet" href="../css/form.css">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   <script src="../js/secret.js"></script>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -81,24 +84,35 @@
             </div>
           </div>
         </div>
-        
+
         <div class="text-right">
           <input type="button" value="Submit" id="submit" class="btn btn-primary">
         </div>
       </div>
     </form>
   </main>
-  
+
   <div id="notificationDialogContainer">
-      <div id="notificationDialog">
-          <h1>Would you like to recieve notifications?</h1>
-          <h2>Notifications can:</h2>
-          <p>Notify you when you need to update your emergency survival kit</p>
-          <p>Notify you on possible actions to take during a disaster</p>
-          <div class=buttonContainer>
-              <button type="button" id="buttonNo" class="btn btn-primary">No</button>
-              <button type="button" id="buttonYes" class="btn btn-primary">Yes</button>
-          </div>
+    <div id="notificationDialog">
+      <h1>Would you like to recieve notifications?</h1>
+      <h2>Notifications can:</h2>
+      <p>Notify you when you need to update your emergency survival kit</p>
+      <p>Notify you on possible actions to take during a disaster</p>
+      <div class=buttonContainer>
+        <button type="button" id="buttonNo" class="btn btn-primary">No</button>
+        <button type="button" id="buttonYes" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="loginDialogContainer">
+    <div id="loginDialog">
+      <h4 class="text-center mb-4">Login</h4>
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+      <div class="text-center mt-4">
+        <button class="btn btn-secondary" id="closeLoginDialog">Close</button>
+      </div>
     </div>
   </div>
 
