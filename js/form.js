@@ -1,34 +1,41 @@
-var submitButton = document.getElementById("submit");
-var notificationDialog = document.getElementById("notificationDialogContainer");
-var buttonHome = document.getElementById("buttonHome");
-
-submitButton.addEventListener("click", function () {
-    saveFormData();
-    notificationDialog.style.display = "block";
-});
-
-buttonHome.addEventListener("click", function() {
-  document.location.href = "../index.html";
-})
-
+// Initialize firebase
 firebase.initializeApp(firebaseConfig);
 
+// Handle submit button's click event
+$("#submit").click(function (e) { 
+    e.preventDefault();
+    saveFormData();
+    var notificationDialog = document.getElementById("notificationDialogContainer");
+    notificationDialog.style.display = "block";
+    return false;
+});
+
+// Handle home button's click event
+$("#buttonHome").click(function (e) { 
+    e.preventDefault();
+    document.location.href = "../index.html";
+    return false;
+})
+
+// Handle log out button's click event
+$("#logout").click(function (e) { 
+    e.preventDefault();
+    logout();
+    return false;
+});
+
+// Observe user auth state
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
         $("#login").css("display", "none");
         $("#logout").css("display", "inline");
+        console.log(user);
     } else {
         // No user is signed in.
         $("#login").css("display", "inline");
         $("#logout").css("display", "none");
     }
-});
-
-$("#logout").click(function (e) { 
-    e.preventDefault();
-    logout();
-    return false;
 });
 
 function logout() {
