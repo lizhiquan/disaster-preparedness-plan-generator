@@ -26,7 +26,7 @@ $("#logout").click(function (e) {
 
 // Observe user auth state
 firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
+    if (user && !user.isAnonymous) {
         // User is signed in.
         $("#login").css("display", "none");
         $("#logout").css("display", "inline");
