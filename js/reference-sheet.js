@@ -20,6 +20,11 @@ firebase.auth().onAuthStateChanged(function (user) {
         $("#login").css("display", "none");
         $("#logout").css("display", "inline");
         $("#setting").css("display", "inline");
+        getFormDataFromFirebaseDb(user.uid)
+            .then((snap) => {
+                let formData = snap.val();
+                generatePDF(formData);
+            });
     } else {
         // No user is signed in.
         $("#login").css("display", "inline");
@@ -40,6 +45,11 @@ function getFormDataFromLocalStorage() {
         medication: storage.getItem("medication"),
         mobility: storage.getItem("mobility")
     }
+}
+
+function getFormDataFromFirebaseDb(userId) {
+    let dbRef = firebase.database().ref('forms/' + userId);
+    return dbRef.once('value');
 }
 
 function generatePDF(formData) {
