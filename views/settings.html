@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/settings.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="../js/secret.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
   </head>
   <body>
     <header>
@@ -42,6 +52,17 @@
       <div id="mainTable">
       </div>
 
+    </div>
+
+    <div id="loginDialogContainer">
+      <div id="loginDialog">
+        <h4 class="text-center mb-4">Login</h4>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+        <div class="text-center mt-4">
+          <button class="btn btn-secondary" id="closeLoginDialog">Close</button>
+        </div>
+      </div>
     </div>
 
       <!-- <div id="toggleContainer">

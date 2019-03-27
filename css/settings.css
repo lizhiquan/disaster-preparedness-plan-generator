@@ -55,3 +55,30 @@ div {
 #mainTable {
   overflow: auto;
 }
+
+#setting, #login, #logout {
+  display: none;
+}
+
+#loginDialogContainer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+#loginDialog {
+  display: none;
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 3px;
+  background: white;
+  padding: 3%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
