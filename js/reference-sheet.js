@@ -20,8 +20,8 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user && !user.isAnonymous) {
         // User is signed in.
         $("#login").css("display", "none");
-        $("#logout").css("display", "inline");
-        $("#setting").css("display", "inline");
+        $("#logout").css("display", "inherit");
+        $("#setting").css("display", "inherit");
         getFormDataFromFirebaseDb(user.uid)
             .then((snap) => {
                 let formData = snap.val();
@@ -29,7 +29,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             });
     } else {
         // No user is signed in.
-        $("#login").css("display", "inline");
+        $("#login").css("display", "inherit");
         $("#logout").css("display", "none");
         $("#setting").css("display", "none");
         generatePDF(getFormDataFromLocalStorage());
