@@ -15,6 +15,13 @@ $("#buttonHome").click(function (e) {
     return false;
 });
 
+// Handle log out button's click event
+$("#logout").click(function (e) { 
+    e.preventDefault();
+    logout();
+    return false;
+});
+
 // Observe user auth state
 firebase.auth().onAuthStateChanged(function (user) {
     if (user && !user.isAnonymous) {
@@ -35,6 +42,16 @@ firebase.auth().onAuthStateChanged(function (user) {
         generatePDF(getFormDataFromLocalStorage());
     }
 });
+
+function logout() {
+    firebase.auth().signOut()
+        .then(function() {
+            document.location.href = "../views/form.html";
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+}
 
 function getFormDataFromLocalStorage() {
     var storage = window.localStorage;
