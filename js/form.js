@@ -17,13 +17,6 @@ $("#submit").click(function (e) {
     return false;
 });
 
-// Handle home button's click event
-$("#buttonHome").click(function (e) { 
-    e.preventDefault();
-    document.location.href = "../index.html";
-    return false;
-})
-
 // Handle log out button's click event
 $("#logout").click(function (e) { 
     e.preventDefault();
@@ -92,12 +85,12 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user && !user.isAnonymous) {
         // User is signed in.
         $("#login").css("display", "none");
-        $("#logout").css("display", "inline");
-        $("#setting").css("display", "inline");
+        $("#logout").css("display", "inherit");
+        $("#setting").css("display", "inherit");
         fetchFormData(user.uid);
     } else {
         // No user is signed in.
-        $("#login").css("display", "inline");
+        $("#login").css("display", "inherit");
         $("#logout").css("display", "none");
         $("#setting").css("display", "none");
     }
