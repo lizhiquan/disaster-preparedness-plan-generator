@@ -47,9 +47,12 @@
     </nav>
   </header>
 
-  <main>
-    <form action="" method="post">
-      <div class="container">
+  <main class="container">
+    <div class="jumbotron">
+      <h1 class="display-5">Hello, <span id="userName">there</span>!</h1>
+      <p class="lead">Please fill out this form with your information correctly to receive the best reference sheet ever!</p>
+
+      <form action="" method="post">
         <div class="row">
           <div class="form-group col-sm-12 col-md-6">
             <label for="fullname">Full Name</label>
@@ -64,8 +67,39 @@
 
         <div class="row">
           <div class="form-group col-sm-12 col-md-9">
-            <label for="familySize">Household Size</label>
-            <input type="range" class="custom-range" value="3" name="familySize" id="familySize" min="1" max="9">
+            <label for="familySize">Household Size</label><br>
+            <div class="btn-group d-flex btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active" id="familySize1">
+                <input type="radio" name="familySize" autocomplete="off" checked> 1
+              </label>
+              <label class="btn btn-secondary" id="familySize2">
+                <input type="radio" name="familySize" autocomplete="off"> 2
+              </label>
+              <label class="btn btn-secondary" id="familySize3">
+                <input type="radio" name="familySize" autocomplete="off"> 3
+              </label>
+              <label class="btn btn-secondary" id="familySize4">
+                <input type="radio" name="familySize" autocomplete="off"> 4
+              </label>
+              <label class="btn btn-secondary" id="familySize5">
+                <input type="radio" name="familySize" autocomplete="off"> 5
+              </label>
+              <label class="btn btn-secondary" id="familySize6">
+                <input type="radio" name="familySize" autocomplete="off"> 6
+              </label>
+              <label class="btn btn-secondary" id="familySize7">
+                <input type="radio" name="familySize" autocomplete="off"> 7
+              </label>
+              <label class="btn btn-secondary" id="familySize8">
+                <input type="radio" name="familySize" autocomplete="off"> 8
+              </label>
+              <label class="btn btn-secondary" id="familySize9">
+                <input type="radio" name="familySize" autocomplete="off"> 9
+              </label>
+              <label class="btn btn-secondary" id="familySize10">
+                <input type="radio" name="familySize" autocomplete="off"> 10
+              </label>
+            </div>
           </div>
           <div class="form-group col-sm-12 col-md-3">
             <label for="children">Number of Children</label>
@@ -102,8 +136,8 @@
         <div class="text-right">
           <input type="button" value="Submit" id="submit" class="btn btn-primary">
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </main>
 
   <div id="notificationDialogContainer">

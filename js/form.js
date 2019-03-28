@@ -116,7 +116,7 @@ function getFormData() {
     return {
         fullname: $("#fullname").val(),
         postalCode: $("#postalCode").val(),
-        familySize: $("#familySize").val(),
+        familySize: $('.btn-group > .btn.active').text().trim(),
         children: $("#children").val(),
         medication: $("input[name=medication]:checked").val(),
         mobility: $("input[name=mobility]:checked").val()
@@ -154,8 +154,9 @@ function fetchFormData(userId) {
 
 function updateHtmlFormValues(formData) {
     $("#fullname").val(formData.fullname);
+    $("#userName").text(formData.fullname);
     $("#postalCode").val(formData.postalCode);
-    $("#familySize").val(formData.familySize);
+    $("#familySize" + formData.familySize).button('toggle');
     $("#children").val(formData.children);
     $("#medicationYes").prop('checked', formData.medication == 'yes');
     $("#mobilityYes").prop('checked', formData.mobility == 'yes');
