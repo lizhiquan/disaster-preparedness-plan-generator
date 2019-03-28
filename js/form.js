@@ -46,6 +46,20 @@ $("#closeLoginDialog").click(function (e) {
     return false;
 });
 
+// Handle 'no' notifications dialog button's click event
+$("#notificationsButtonNo").click(function (e) { 
+    e.preventDefault();
+    document.location.href = "./reference-sheet.html";
+    return false;
+});
+
+// Handle 'yes' notifications dialog button's click event
+$("#notificationsButtonYes").click(function (e) { 
+    e.preventDefault();
+    document.location.href = "./reference-sheet.html";
+    return false;
+});
+
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
     callbacks: {
