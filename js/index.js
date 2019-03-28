@@ -1,11 +1,16 @@
-var getStartedButton = document.getElementById("getStarted");
-var loginDialog = document.getElementById("loginDialogContainer");
-
-getStartedButton.addEventListener("click", function() {
-    loginDialog.style.display = "block";
-    // disable scrolling
-    document.body.style.overflow = "hidden";
-});
+// Handle Get Started button's click event
+document.getElementById("getStarted")
+    .addEventListener("click", function() {
+        let user = firebase.auth().currentUser;
+        if (user && !user.isAnonymous) {
+            document.location.href = './views/form.html';
+        } else {
+            var loginDialog = document.getElementById("loginDialogContainer");
+            loginDialog.style.display = "block";
+            // disable scrolling
+            document.body.style.overflow = "hidden";
+        }
+    });
 
 firebase.initializeApp(firebaseConfig);
 
