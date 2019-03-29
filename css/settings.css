@@ -1,6 +1,4 @@
-div {
-  border: 1px solid black;
-}
+
 
 #inputHead {
   display: flex;
@@ -81,4 +79,10 @@ div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#remove {
+  color: red;
+  text-decoration:underline;
+  width: 64px;
 }

@@ -75,6 +75,9 @@
     
     <script src="../js/settings.js"></script>
     <script>
+
+    var table = $("<table>").appendTo("#mainTable").addClass("table");
+    var tbody = table.append("<tbody></tbody>");
     
     function addItem() {
       var itemName = document.getElementById("itemName").value;
@@ -82,22 +85,31 @@
       var dateAdded = document.getElementById("dateAdded").value;
       var expireDate = document.getElementById("expireDate").value;
 
-      var table = $("<table>").appendTo("#mainTable").addClass("tables");
-      var tbody = table.append("<tbody></tbody>");
-      var newRow = tbody.append("<tr></tr>");
-
       var i1 = $("<td></td>").html(itemName).addClass("col1");
       var i2 = $("<td></td>").html(itemType).addClass("col2");
       var i3 = $("<td></td>").html(dateAdded).addClass("col3");
       var i4 = $("<td></td>").html(expireDate).addClass("col4");
+      var i5 = $("<button></button>").attr('id', 'remove').text("Delete").addClass("col5");
+      
+      $(tbody).append("<tr>",i1,i2,i3,i4,i5,"</tr>");
 
-      newRow.append(i1,i2,i3,i4);
+    };
 
-    }
+    $('#remove').click(function() {
+        var id = $(this).attr('id');
+        id.remove();
+    });
+    
+    // $(function() { 
+    //   $('#remove').on('click',function() {
+    //     var id = $(this).attr('id');
+    //     id.remove();
+    //   });
+    // });
 
 
 
-      </script>
+    </script>
     
   </body>
 
