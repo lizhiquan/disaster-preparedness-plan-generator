@@ -32,6 +32,7 @@ $("#logout").click(function (e) {
 firebase.auth().onAuthStateChanged(function (user) {
     if (user && !user.isAnonymous) {
         // User is signed in.
+        fetchCurrentUserSettings();
     } else {
         // No user is signed in.
     }
@@ -117,9 +118,8 @@ function addItem() {
     var i5 = $("<button></button>").attr('id', 'remove').text("Delete").addClass("col5");
     
     var table = $("#nutritionTable");
-    var tbody = table.append("<tbody></tbody>");
     var row = $("<tr></tr>").append(i1, i2, i3, i4, i5);
-    $(tbody).append(row);
+    table.append(row);
 
     i5.click(function (e) {
         e.preventDefault();
@@ -127,3 +127,33 @@ function addItem() {
         return false;
     });
 };
+
+function updateHtmlTableValues(userSettings) {
+    for (let id in userSettings) {
+        let item = userSettings[id];
+        var i1 = $("<td></td>").html(item.itemName).addClass("col1");
+        var i2 = $("<td></td>").html(item.itemType).addClass("col2");
+        var i3 = $("<td></td>").html(item.dateAdded).addClass("col3");
+        var i4 = $("<td></td>").html(item.expireDate).addClass("col4");
+        var i5 = $("<button></button>").attr('id', 'remove').text("Delete").addClass("col5");
+        
+        var table = $("#nutritionTable");
+        var row = $("<tr></tr>").append(i1, i2, i3, i4, i5);
+        table.append(row);
+    
+        i5.click(function (e) {
+            e.preventDefault();
+            row.remove();
+            return false;
+        });
+    }
+};
+
+function fetchCurrentUserSettings() {
+    firebase.database().ref("settings")
+        .child(getUserId())
+        .once('value')
+        .then((snapshot) => {
+            updateHtmlTableValues(snapshot.val());
+        });
+}

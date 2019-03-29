@@ -38,6 +38,7 @@
   flex-direction: column;
   height: 300px;
   box-shadow: 0 0 10px;
+  overflow: scroll;
 }
 
 #tableTitle {
@@ -49,7 +50,7 @@
 }
 
 #nutritionTable {
-  overflow: auto;
+  overflow: scroll;
 }
 
 #setting, #login, #logout {
