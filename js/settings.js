@@ -2,59 +2,47 @@
 firebase.initializeApp(firebaseConfig);
 
 // Handle add item button's click event
-$("#submit").click(function (e) { 
+$("#submit").click(function (e) {
     e.preventDefault();
-    
+
     let userId = getUserId();
     if (userId != null) {
         saveSettingsDataToFirebaseDb(getSettingsData(), userId);
     } else {
         saveSettingsDataToLocalStorage(getSettingsData());
     }
-
-    var notificationDialog = document.getElementById("notificationDialogContainer");
-    notificationDialog.style.display = "block";
     return false;
 });
 
 // Handle home button's click event
-$("#buttonHome").click(function (e) { 
+$("#buttonHome").click(function (e) {
     e.preventDefault();
     document.location.href = "../index.html";
     return false;
 })
 
 // Handle log out button's click event
-$("#logout").click(function (e) { 
+$("#logout").click(function (e) {
     e.preventDefault();
     logout();
     return false;
 });
 
-ui.start('#firebaseui-auth-container', uiConfig);
-
 // Observe user auth state
 firebase.auth().onAuthStateChanged(function (user) {
     if (user && !user.isAnonymous) {
         // User is signed in.
-        $("#login").css("display", "none");
-        $("#logout").css("display", "inline");
-        $("#setting").css("display", "inline");
-        fetchFormData(user.uid);
     } else {
         // No user is signed in.
-        $("#login").css("display", "inline");
-        $("#logout").css("display", "none");
-        $("#setting").css("display", "none");
     }
 });
 
 function logout() {
     firebase.auth().signOut()
-        .then(function() {
+        .then(function () {
             // Sign-out successful.
         })
-        .catch(function(error) {
+        .catch(function (error) {
             // An error happened
             console.log(error);
         });
@@ -115,3 +103,27 @@ function fetchSettingsData(userId) {
 //     $("#medicationYes").prop('checked', formData.medication == 'yes');
 //     $("#mobilityYes").prop('checked', formData.mobility == 'yes');
 // }
+
+function addItem() {
+    var itemName = document.getElementById("itemName").value;
+    var itemType = document.getElementById("itemType").value;
+    var dateAdded = document.getElementById("dateAdded").value;
+    var expireDate = document.getElementById("expireDate").value;
+
+    var i1 = $("<td></td>").html(itemName).addClass("col1");
+    var i2 = $("<td></td>").html(itemType).addClass("col2");
+    var i3 = $("<td></td>").html(dateAdded).addClass("col3");
+    var i4 = $("<td></td>").html(expireDate).addClass("col4");
+    var i5 = $("<button></button>").attr('id', 'remove').text("Delete").addClass("col5");
+    
+    var table = $("#nutritionTable");
+    var tbody = table.append("<tbody></tbody>");
+    var row = $("<tr></tr>").append(i1, i2, i3, i4, i5);
+    $(tbody).append(row);
+
+    i5.click(function (e) {
+        e.preventDefault();
+        row.remove();
+        return false;
+    });
+};

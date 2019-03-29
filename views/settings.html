@@ -49,9 +49,9 @@
 
     <div id="tableContainer">
       <div id="tableTitle">---------------------------------------- <em>Active Reminders</em> ---------------------------------------- </div>
-      <div id="mainTable">
-      </div>
+      <table id="nutritionTable">
 
+      </table>
     </div>
 
     <div id="loginDialogContainer">
@@ -74,42 +74,6 @@
       </div> -->
     
     <script src="../js/settings.js"></script>
-    <script>
-
-    var table = $("<table>").appendTo("#mainTable").addClass("table");
-    var tbody = table.append("<tbody></tbody>");
-    
-    function addItem() {
-      var itemName = document.getElementById("itemName").value;
-      var itemType = document.getElementById("itemType").value;
-      var dateAdded = document.getElementById("dateAdded").value;
-      var expireDate = document.getElementById("expireDate").value;
-
-      var i1 = $("<td></td>").html(itemName).addClass("col1");
-      var i2 = $("<td></td>").html(itemType).addClass("col2");
-      var i3 = $("<td></td>").html(dateAdded).addClass("col3");
-      var i4 = $("<td></td>").html(expireDate).addClass("col4");
-      var i5 = $("<button></button>").attr('id', 'remove').text("Delete").addClass("col5");
-      
-      $(tbody).append("<tr>",i1,i2,i3,i4,i5,"</tr>");
-
-    };
-
-    $('#remove').click(function() {
-        var id = $(this).attr('id');
-        id.remove();
-    });
-    
-    // $(function() { 
-    //   $('#remove').on('click',function() {
-    //     var id = $(this).attr('id');
-    //     id.remove();
-    //   });
-    // });
-
-
-
-    </script>
     
   </body>
 

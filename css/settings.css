@@ -1,5 +1,3 @@
-
-
 #inputHead {
   display: flex;
   width: 70%;
@@ -50,7 +48,7 @@
   width: 100%;
 }
 
-#mainTable {
+#nutritionTable {
   overflow: auto;
 }
 
