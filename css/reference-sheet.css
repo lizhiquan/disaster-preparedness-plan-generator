@@ -1,45 +1,11 @@
-html, body {
-  height: 100%;
-}
-
-#formContainer {
-  flex-basis: 60%;
-  height: 100%;
+#setting, #login, #logout {
+  display: none;
 }
 
 #myTabContent {
-  height:100%;
+  height: 80vh;
 }
 
-.referenceSheet {
-  width: 100%;
-  height: 100%;
-   border: 1px solid black; 
-}
-
-.outputmain {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  /* border: 1px solid black; */
-}
-
-.outputactions-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 40%;
-  margin: auto;
-  /* border: 1px solid black; */
-}
-
-.outputactions-child {
-  height: 40%;
-  margin: auto;
-  /* border: 1px solid black; */
-}
-
-#setting, #login, #logout {
-  display: none;
+#dlBtn, #saveBtn, #buttonModify {
+  margin-left: 10px;
 }

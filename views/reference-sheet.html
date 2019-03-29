@@ -43,23 +43,30 @@
     </nav>
   </header>
   
-  <div id="tabContainer" class="outputmain">
-    <div id="formContainer">
-      <ul class="nav nav-tabs" id="myTab role=tablist">
-        <li class="nav-item"><a class="nav-link active" id="DPG-long-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Disaster Survival Plan</a></li>
-        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Disaster Survival Plan Lite</a></li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-        <iframe type="application/pdf" id="tab-1" class="referenceSheet tab-pane fade show active" role="tabpanel" aria-labelledby="first-tab" src="../resources/emergency_kit_checklist.pdf"></iframe>
-        <p id="tab-2" class="referenceSheet tab-pane fade show" role="tabpanel" aria-labelledby="second-tab">Hello</p>
+  <main class="container">
+    <div id="tabContainer" class="outputmain">
+      <div id="formContainer">
+        <ul class="nav nav-tabs mb-2" id="myTab role=tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="DPG-long-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Full version</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Lite version</a>
+          </li>
+          <button id="dlBtn" class="btn btn-primary ml-auto ">Download As...</button>
+          <button id="saveBtn" class="btn btn-primary">Save for Later</button>
+          <button id="buttonModify" class="btn btn-primary">Modify Inputs</button>
+        </ul>
+
+        <div class="tab-content d-flex" id="myTabContent">
+          <!-- Tab 1 content -->
+          <iframe type="application/pdf" id="tab-1" class="referenceSheet tab-pane fade show active flex-grow-1" role="tabpanel" aria-labelledby="first-tab" src="../resources/emergency_kit_checklist.pdf"></iframe>
+          <!-- Tab 2 content -->
+          <p id="tab-2" class="referenceSheet tab-pane fade show" role="tabpanel" aria-labelledby="second-tab">Hello</p>
+        </div>
       </div>
     </div>
-    <div class="outputactions-container">
-      <div class="outputactions-child"><button class="btn btn-primary">Download As...</button></div>
-      <div class="outputactions-child"><button class="btn btn-primary">Save for Later</button></div>
-      <div class="outputactions-child"><button id="buttonModify" class="btn btn-primary">Modify Inputs</button></div>
-    </div>
-  </div>
+  </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
