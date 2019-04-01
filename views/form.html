@@ -24,6 +24,7 @@
 </head>
 
 <body>
+  <!--  Layout for nav bar-->
   <header class="mb-4">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="../index.html">
@@ -52,6 +53,7 @@
       <h1 class="display-5">Hello, <span id="userName">there</span>!</h1>
       <p class="lead">Please fill out this form with your information correctly to receive the best reference sheet ever!</p>
 
+      <!--Layout for full name field-->
       <form action="" method="post">
         <div class="row">
           <div class="form-group col-sm-12 col-md-6">
@@ -59,12 +61,14 @@
             <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full name" required>
           </div>
 
+          <!--Layout for postal code field-->
           <div class="form-group col-sm-12 col-md-6">
             <label for="postalCode">Postal Code</label>
             <input type="text" class="form-control" name="postalCode" id="postalCode" placeholder="VXX XXX" required>
           </div>
         </div>
-
+        
+        <!--Layout for family size counter-->
         <div class="row">
           <div class="form-group col-sm-12 col-md-9">
             <label for="familySize">Household Size</label><br>
@@ -101,12 +105,15 @@
               </label>
             </div>
           </div>
+          
+          <!--Layout for Child counter-->
           <div class="form-group col-sm-12 col-md-3">
             <label for="children">Number of Children</label>
             <input type="number" class="form-control" value="0" name="childrenNo" id="children" min="0" max="9">
           </div>
         </div>
-
+        
+        <!--Layout for medication selection-->
         <div class="row">
           <div class="form-group col-sm-12 col-md-6">
             <div>Are you currently taking any medication?</div>
@@ -120,6 +127,7 @@
             </div>
           </div>
 
+          <!--Layout for mobility selection-->
           <div class="form-group col-sm-12 col-md-6">
             <div>Are you experiencing any mobility issues?</div>
             <div class="form-check form-check-inline">
@@ -133,6 +141,7 @@
           </div>
         </div>
 
+        <!--Container for submit button-->
         <div class="text-right">
           <input type="button" value="Submit" id="submit" class="btn btn-primary">
         </div>
@@ -140,6 +149,7 @@
     </div>
   </main>
 
+<!--  Layout for notification dialog-->
   <div id="notificationDialogContainer">
     <div id="notificationDialog">
       <h2>Would you like to receive notifications?</h2>
@@ -153,6 +163,7 @@
     </div>
   </div>
 
+<!--  Layout for login dialog-->
   <div id="loginDialogContainer">
     <div id="loginDialog">
       <h4 class="text-center mb-4">Login</h4>

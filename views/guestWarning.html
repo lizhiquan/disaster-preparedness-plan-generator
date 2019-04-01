@@ -5,19 +5,24 @@
   	<link rel="stylesheet" href="../css/warning.css">
   </head>
   <body>
+        <!--Layout for warning dialog-->
 		<div class="warningMessage">
 			<div class="warningContainer">
-			<h1>Warning!</h1>
-			<h2>Guests cannot access certain features including:</h2>
-			<p>Saving a copy of the generated PDF</p>
-			<p>Recieving push notifications</p>
+              <h1>Warning!</h1>
+              <h2>Guests cannot access certain features including:</h2>
+              <p>Saving a copy of the generated PDF</p>
+              <p>Recieving push notifications</p>
 			</div>
 			<div class="buttonContainer">
-			<button type="button" id="buttonLogin">Login</button>
-			<button type="button" id="buttonProceed">Proceed</button>
+              <button type="button" id="buttonLogin">Login</button>
+              <button type="button" id="buttonProceed">Proceed</button>
 			</div>
 		</div>
+    
+        <!--Script for JQuery-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    
+        <!--Script for buttons-->
 		<script>
 			$(document).ready(function() {
 				$(".warningMessage").mouseover(function(){

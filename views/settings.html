@@ -3,9 +3,15 @@
   <head lang="en">
     <meta charset="utf-8">
     <title>Settings</title>
+    
+    <!--DPPG CSS-->
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/settings.css">
+    
+    <!--jquery script-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+    <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Firebase -->
@@ -18,6 +24,8 @@
 
   </head>
   <body>
+    
+    <!--Layout for navBar-->
     <header>
       <nav class="nav justify-content-end">
         <a id="buttonHome" class="nav-link active" href="#">Home</a>
@@ -26,6 +34,8 @@
         <a class="nav-link" id="logout" href="#">Logout</a>
       </nav>
     </header>
+    
+    <!--Layout for headers-->
     <div id="inputHead">
       <div id="itemNameHead" class="col1">Item Name</div>
       <div id="itemTypeHead" class="col2">Item Type</div>
@@ -34,6 +44,7 @@
       <div id="empty" class="col5"></div>
     </div>
 
+    <!--Layout for input fields-->
     <div id="setForm">
       <div class="col1"><input type="text" name="itemName" placeholder="Enter Item Name" id="itemName"></div>
       <div class="col2">
@@ -47,6 +58,7 @@
       <div id="submit" class="col5"><input type="submit" value="Add Item" onclick="addItem()"></div> 
     </div>
 
+    <!--Layout for settings container-->
     <div id="tableContainer">
       <!-- <div id="tableTitle">---------------------------------------- <em>Active Reminders</em> ---------------------------------------- </div> -->
       <table id="nutritionTable">
@@ -77,6 +89,7 @@
         </label>
       </div> -->
     
+    <!--DPPG Script-->
     <script src="../js/settings.js"></script>
     
   </body>
