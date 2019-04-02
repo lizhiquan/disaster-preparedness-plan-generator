@@ -8,13 +8,13 @@ $("#submit").click(function (e) {
     let userId = getUserId();
     if (userId != null) {
         saveFormDataToFirebaseDb(getFormData(), userId);
+        var notificationDialog = document.getElementById("notificationDialogContainer");
+        notificationDialog.style.display = "block";
+        return false;
     } else {
         saveFormDataToLocalStorage(getFormData());
+        document.location.href = "./reference-sheet.html";
     }
-
-    var notificationDialog = document.getElementById("notificationDialogContainer");
-    notificationDialog.style.display = "block";
-    return false;
 });
 
 // Handle log out button's click event
