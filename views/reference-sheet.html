@@ -51,6 +51,11 @@
 
     <!--Layout for Tabs-->
     <main class="container">
+      <div class="nav nav-bar" id="buttonContainer">
+        <button id="dlBtn" class="btn btn-primary d-block d-sm-block d-md-none">Download As...</button>
+        <button id="saveBtn" class="btn btn-primary d-block d-sm-block d-md-none">Save As...</button>
+        <button id="buttonModify" class="btn btn-primary d-block d-sm-block d-md-none">Modify Form</button>
+      </div>
       <div id="tabContainer" class="outputmain">
         <div id="formContainer">
           <ul class="nav nav-tabs mb-2" id="myTab role=tablist">
@@ -60,9 +65,10 @@
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Lite version</a>
             </li>
-            <button id="dlBtn" class="btn btn-primary ml-auto ">Download As...</button>
-            <button id="saveBtn" class="btn btn-primary">Save for Later</button>
-            <button id="buttonModify" class="btn btn-primary">Modify Inputs</button>
+            <!--Layout for Buttons-->
+            <button id="dlBtn" class="btn btn-primary ml-auto d-none d-md-block d-lg-block d-xl-block">Download As...</button>
+            <button id="saveBtn" class="btn btn-primary d-none d-lg-block d-md-block d-xl-block">Save As...</button>
+            <button id="buttonModify" class="btn btn-primary d-none d-md-block d-lg-block d-xl-block">Modify Form</button>
           </ul>
           <div class="tab-content d-flex" id="myTabContent">
             <!-- Tab 1 content -->

@@ -9,3 +9,7 @@
 #dlBtn, #saveBtn, #buttonModify {
   margin-left: 10px;
 }
+
+#buttonContainer{
+  margin-bottom: 10pt;
+}
