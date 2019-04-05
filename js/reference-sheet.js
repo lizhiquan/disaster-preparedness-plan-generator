@@ -32,7 +32,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         getFormDataFromFirebaseDb(user.uid)
             .then((snap) => {
                 let formData = snap.val();
-                generatePDF(formData);
+                handleFormData(formData);
             });
     } else {
         // No user is signed in.
@@ -71,13 +71,73 @@ function getFormDataFromFirebaseDb(userId) {
     return dbRef.once('value');
 }
 
-function generatePDF(formData) {
+function getChecklists() {
+    firebase.database().ref()
+        .child('checklists')
+        .once('value')
+        .then((snapshot) => {
+            generatePDF(snapshot.val());
+        });
+}
+
+function handleFormData(formData) {
+// var row = 1;
+    // for (let key in formData) {
+    //     doc.text(key + ": " + formData[key], 20, row * 10 + 10);
+    //     row++;
+    // }
+
+    getChecklists();
+}
+
+function generatePDF(checklists) {
     var doc = new jsPDF();
-    var row = 1;
-    for (let key in formData) {
-        doc.text(key + ": " + formData[key], 20, row * 10 + 10);
-        row++;
-    }
+
+    let body = checklists.map(x => [x.itemName, x.itemType, x.quantity]);
+
+    let finalY = 20;
+    doc.text('Reference Sheet', 85, finalY);
+
+    finalY += 10;
+    doc.text('General Checklist', 16, finalY);
+
+    finalY += 2;
+    doc.autoTable({
+        startY: finalY,
+        head: [['Item Name', 'Item Type', 'Quantity']],
+        body: body
+    });
+
+    finalY = doc.previousAutoTable.finalY + 10;
+    doc.text('Another Title', 16, finalY);
+
+    finalY = doc.previousAutoTable.finalY + 12;
+    doc.autoTable({
+        startY: finalY,
+        head: [['Item Name', 'Item Type', 'Quantity']],
+        body: body
+    });
+
+    finalY = doc.previousAutoTable.finalY + 10;
+    doc.text('Another Title', 16, finalY);
+
+    finalY = doc.previousAutoTable.finalY + 12;
+    doc.autoTable({
+        startY: finalY,
+        head: [['Item Name', 'Item Type', 'Quantity']],
+        body: body
+    });
+
+    finalY = doc.previousAutoTable.finalY + 10;
+    doc.text('Another Title', 16, finalY);
+
+    finalY = doc.previousAutoTable.finalY + 12;
+    doc.autoTable({
+        startY: finalY,
+        head: [['Item Name', 'Item Type', 'Quantity']],
+        body: body
+    });
+
     var pdfBlob = doc.output('blob', 'DPPG.pdf');
     $('#tab-1').attr('src', URL.createObjectURL(pdfBlob));
 }
