@@ -118,7 +118,7 @@ function getFormData() {
         postalCode: $("#postalCode").val(),
         familySize: $('.btn-group > .btn.active').text().trim(),
         children: $("#children").val(),
-        medication: $("input[name=medication]:checked").val(),
+        medication: $("#medication").val(),
         mobility: $("input[name=mobility]:checked").val()
     };
 }
@@ -158,6 +158,6 @@ function updateHtmlFormValues(formData) {
     $("#postalCode").val(formData.postalCode);
     $("#familySize" + formData.familySize).button('toggle');
     $("#children").val(formData.children);
-    $("#medicationYes").prop('checked', formData.medication == 'yes');
+    $("#medication").val(formData.medication);
     $("#mobilityYes").prop('checked', formData.mobility == 'yes');
 }
