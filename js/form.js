@@ -119,7 +119,8 @@ function getFormData() {
         familySize: $('.btn-group > .btn.active').text().trim(),
         children: $("#children").val(),
         medication: $("#medication").val(),
-        mobility: $("input[name=mobility]:checked").val()
+        mobility: $("input[name=mobility]:checked").val(),
+        pet: $("input[name=pet]:checked").val()
     };
 }
 
@@ -160,4 +161,5 @@ function updateHtmlFormValues(formData) {
     $("#children").val(formData.children);
     $("#medication").val(formData.medication);
     $("#mobilityYes").prop('checked', formData.mobility == 'yes');
+    $("#petYes").prop('checked', formData.pet == 'yes');
 }

@@ -6,7 +6,7 @@
   height: 80vh;
 }
 
-#dlBtn, #saveBtn, #buttonModify {
+#dlBtn, #saveBtn, .buttonModify {
   margin-left: 10px;
 }
 

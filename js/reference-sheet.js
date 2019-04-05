@@ -2,7 +2,7 @@
 firebase.initializeApp(firebaseConfig);
 
 // Handle modify button's click event
-$("#buttonModify").click(function (e) { 
+$(".buttonModify").click(function (e) { 
     e.preventDefault();
     document.location.href = "../views/form.html";
     return false;
