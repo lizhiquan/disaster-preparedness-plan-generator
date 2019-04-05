@@ -1,6 +1,19 @@
 // Initialize firebase
 firebase.initializeApp(firebaseConfig);
 
+// Handle add item button's click event
+$("#addItem").click(function (e) {
+    e.preventDefault();
+
+    let userId = getUserId();
+    if (userId != null) {
+        saveSettingsDataToFirebaseDb(generateRowID(), getSettingsData(), userId);
+    } else {
+        saveSettingsDataToLocalStorage(getSettingsData());
+    }
+    return false;
+});
+
 // Handle log out button's click event
 $("#logout").click(function (e) {
     e.preventDefault();
@@ -52,13 +65,14 @@ function saveSettingsDataToLocalStorage(settingsData) {
     }
 }
 
-function saveSettingsDataToFirebaseDb(settingsData, userId) {
+function saveSettingsDataToFirebaseDb(id, settingsData, userId) {
     if (userId == null) {
         return;
     }
     let updates = {};
-    updates['/settings/' + userId + '/' + generateRowID()] = settingsData;
-    return firebase.database().ref().update(updates);
+    updates['/settings/' + userId + '/' + id] = settingsData;
+    firebase.database().ref().update(updates);
+    addItem(id, settingsData);
 }
 
 function generateRowID() {
@@ -78,64 +92,49 @@ function fetchSettingsData(userId) {
     });
 }
 
-// function updateHtmlFormValues(formData) {
-//     $("#fullname").val(formData.fullname);
-//     $("#postalCode").val(formData.postalCode);
-//     $("#familySize").val(formData.familySize);
-//     $("#children").val(formData.children);
-//     $("#medicationYes").prop('checked', formData.medication == 'yes');
-//     $("#mobilityYes").prop('checked', formData.mobility == 'yes');
-// }
-
-function addItem() {
-    var itemName = document.getElementById("itemName").value;
-    var itemType = document.getElementById("itemType").value;
-    var dateAdded = document.getElementById("dateAdded").value;
-    var expireDate = document.getElementById("expireDate").value;
-
-    var i1 = $("<td></td>").html(itemName).addClass("col1");
-    var i2 = $("<td></td>").html(itemType).addClass("col2");
-    var i3 = $("<td></td>").html(dateAdded).addClass("col3");
-    var i4 = $("<td></td>").html(expireDate).addClass("col4");
-    var i5 = $("<button></button>").attr('id', 'remove').text("Delete").addClass("col5");
-    
-    var table = $("#nutritionTable");
-    var row = $("<tr></tr>").append(i1, i2, i3, i4, i5);
-    table.append(row);
-
-    i5.click(function (e) {
-        e.preventDefault();
-        row.remove();
-        return false;
-    });
-};
-
-function updateHtmlTableValues(userSettings) {
-    for (let id in userSettings) {
-        let item = userSettings[id];
-        var i1 = $("<td></td>").html(item.itemName).addClass("col1");
-        var i2 = $("<td></td>").html(item.itemType).addClass("col2");
-        var i3 = $("<td></td>").html(item.dateAdded).addClass("col3");
-        var i4 = $("<td></td>").html(item.expireDate).addClass("col4");
-        var i5 = $("<button></button>").attr('id', 'remove').text("Delete").addClass("col5");
-        
-        var table = $("#nutritionTable");
-        var row = $("<tr></tr>").append(i1, i2, i3, i4, i5);
-        table.append(row);
-    
-        i5.click(function (e) {
-            e.preventDefault();
-            row.remove();
-            return false;
-        });
-    }
-};
-
 function fetchCurrentUserSettings() {
     firebase.database().ref("settings")
         .child(getUserId())
         .once('value')
         .then((snapshot) => {
             updateHtmlTableValues(snapshot.val());
+        });
+}
+
+function addItem(id, item) {
+    let i1 = $("<td scope='row'></td>").html(item.itemName);
+    let i2 = $("<td></td>").html(item.itemType);
+    let i3 = $("<td></td>").html(item.dateAdded);
+    let i4 = $("<td></td>").html(item.expireDate);
+    let i5 = $("<button></button>")
+        .addClass('btn btn-danger')
+        .text("Delete");
+    
+    let table = $("#nutritionTable");
+    let row = $("<tr></tr>")
+        .attr('id', id)
+        .append(i1, i2, i3, i4, i5);
+    table.append(row);
+
+    i5.click(function (e) {
+        e.preventDefault();
+        row.remove();
+        removeFirebaseRecord(id);
+        return false;
+    });
+}
+
+function updateHtmlTableValues(userSettings) {
+    for (let id in userSettings) {
+        let item = userSettings[id];
+        addItem(id, item);
+    }
+};
+
+function removeFirebaseRecord(id) {
+    console.log(id);
+    firebase.database().ref("settings/" + getUserId() + "/" + id)
+        .remove(() => {
+            console.log('Delete successfully!');
         });
 }
