@@ -1,26 +1,6 @@
 // Initialize firebase
 firebase.initializeApp(firebaseConfig);
 
-// Handle add item button's click event
-$("#submit").click(function (e) {
-    e.preventDefault();
-
-    let userId = getUserId();
-    if (userId != null) {
-        saveSettingsDataToFirebaseDb(getSettingsData(), userId);
-    } else {
-        saveSettingsDataToLocalStorage(getSettingsData());
-    }
-    return false;
-});
-
-// Handle home button's click event
-$("#buttonHome").click(function (e) {
-    e.preventDefault();
-    document.location.href = "../index.html";
-    return false;
-})
-
 // Handle log out button's click event
 $("#logout").click(function (e) {
     e.preventDefault();
@@ -35,6 +15,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         fetchCurrentUserSettings();
     } else {
         // No user is signed in.
+        document.location.href = "../index.html";
     }
 });
 
@@ -42,6 +23,7 @@ function logout() {
     firebase.auth().signOut()
         .then(function () {
             // Sign-out successful.
+            document.location.href = "../index.html";
         })
         .catch(function (error) {
             // An error happened
