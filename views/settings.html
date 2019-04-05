@@ -49,48 +49,49 @@
     </nav>
   </header>
 
-  <!--Layout for headers-->
-  <div id="inputHead">
-    <div id="itemNameHead" class="col1">Item Name</div>
-    <div id="itemTypeHead" class="col2">Item Type</div>
-    <div id="dateAddedHead" class="col3">Date Added</div>
-    <div id="expireDateHead" class="col4">Expiry Date</div>
-    <div id="empty" class="col5"></div>
-  </div>
+  <main class="container">
+      <h1>Active Reminders</h1>
 
-  <!--Layout for input fields-->
-  <div id="setForm">
-    <div class="col1"><input type="text" name="itemName" placeholder="Enter Item Name" id="itemName"></div>
-    <div class="col2">
-      <select name="type" id="itemType">
-        <option value="Nutrition">Nutrition</option>
-        <option value="Medicine">Medicine</option>
-      </select>
-    </div>
-    <div class="col3"><input type="date" name="dateAdded" id="dateAdded"></div>
-    <div class="col4"><input type="date" name="expireDate" id="expireDate"></div>
-    <div id="submit" class="col5"><input type="submit" value="Add Item" onclick="addItem()"></div>
-  </div>
-
-  <!--Layout for settings container-->
-  <div id="tableContainer">
-    <!-- <div id="tableTitle">---------------------------------------- <em>Active Reminders</em> ---------------------------------------- </div> -->
-    <table id="nutritionTable">
-      <thead id="tableTitle">
-        ----------------------------------------
-        <em>Active Reminders</em>
-        ----------------------------------------
-      </thead>
-    </table>
-  </div>
-
-  <!-- <div id="toggleContainer">
-        <p>Notifications</p>
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </div> -->
+      <!--Layout for headers-->
+      <div id="inputHead">
+        <div id="itemNameHead" class="col1">Item Name</div>
+        <div id="itemTypeHead" class="col2">Item Type</div>
+        <div id="dateAddedHead" class="col3">Date Added</div>
+        <div id="expireDateHead" class="col4">Expiry Date</div>
+        <div id="empty" class="col5"></div>
+      </div>
+    
+      <!--Layout for input fields-->
+      <div id="setForm">
+        <div class="col1"><input type="text" name="itemName" placeholder="Enter Item Name" id="itemName"></div>
+        <div class="col2">
+          <select name="type" id="itemType">
+            <option value="Nutrition">Nutrition</option>
+            <option value="Medicine">Medicine</option>
+          </select>
+        </div>
+        <div class="col3"><input type="date" name="dateAdded" id="dateAdded"></div>
+        <div class="col4"><input type="date" name="expireDate" id="expireDate"></div>
+        <div id="addItem" class="col5"><input type="submit" value="Add Item"></div>
+      </div>
+    
+      <!--Layout for settings container-->
+      <div id="tableContainer" class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Item Name</th>
+              <th scope="col">Item Type</th>
+              <th scope="col">Date Added</th>
+              <th scope="col">Expiry Date</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="nutritionTable">
+          </tbody>
+        </table>
+      </div>
+  </main>
 
   <script src="../js/settings.js"></script>
 

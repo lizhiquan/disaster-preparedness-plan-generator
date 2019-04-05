@@ -10,74 +10,12 @@
   margin: auto;
 }
 
-.col1 {
-  width: 30%;
-}
-
-.col2 {
-  width: 20%;
-}
-
-.col3 {
-  width: 19%;
-}
-
-.col4 {
-  width: 19%;
-}
-
-.col5 {
-  width: 12%;
-}
-
 #tableContainer {
-  background: lightgray;
-  width: 69.5%;
-  margin: 20px auto 0 auto;
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  box-shadow: 0 0 10px;
-  overflow: scroll;
+  overflow-y: auto;
+  height: 60vh;
 }
 
-#tableTitle {
-  margin: 5px auto 5px auto;
-}
-
-.tables {
-  width: 100%;
-}
-
-#nutritionTable {
-  overflow: scroll;
-}
-
-#loginDialogContainer {
-  display: none;
-  position: fixed;
+#tableContainer th {
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-}
-
-#loginDialog {
-  display: none;
-  width: 70%;
-  border: 1px solid black;
-  border-radius: 3px;
-  background: white;
-  padding: 3%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#remove {
-  color: red;
-  text-decoration:underline;
-  width: 64px;
 }
