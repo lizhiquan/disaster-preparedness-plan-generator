@@ -1,10 +1,9 @@
 body {
     height: 100vh;
-background-image: url(/img/imageedit_4_4908333100.jpg);
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
-
+    background-image: url(../img/imageedit_4_4908333100.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 #loginDialogContainer {
@@ -16,7 +15,6 @@ background-attachment: fixed;
     height: 100%;
     background: rgba(255, 255, 255, 0.8);
 }
-
 
 #loginDialog {
     width: 70%;
@@ -43,8 +41,12 @@ background-attachment: fixed;
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .header {
@@ -52,27 +54,27 @@ background-attachment: fixed;
     color: white;
     background: rgb(32, 32, 32, 0.8);
     padding: 10px 20px;
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -webkit-animation: fadein 2s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s;
+    /* Firefox < 16 */
     animation: fadein 2s;
     margin: 100px auto 50px auto;
     filter: drop-shadow(12px 12px 16px rgb(114, 4, 4));
-  }
+}
 
-  .card-img-top {
-      height: 30vh;
-      object-fit: cover;
-      filter:grayscale(100%);
-  }
+.card-img-top {
+    height: 30vh;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
 
-  .card-deck {
+.card-deck {
     justify-content: center;
-  }
+}
 
-  .card {
+.card {}
 
-  }
-
-  .card-text {
-      color: red;
-  }
+.card-text {
+    color: red;
+}
