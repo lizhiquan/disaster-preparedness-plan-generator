@@ -52,27 +52,37 @@
   <main class="container">
       <h1>Active Reminders</h1>
 
-      <!--Layout for headers-->
-      <div id="inputHead">
-        <div id="itemNameHead" class="col1">Item Name</div>
-        <div id="itemTypeHead" class="col2">Item Type</div>
-        <div id="dateAddedHead" class="col3">Date Added</div>
-        <div id="expireDateHead" class="col4">Expiry Date</div>
-        <div id="empty" class="col5"></div>
-      </div>
-    
-      <!--Layout for input fields-->
-      <div id="setForm">
-        <div class="col1"><input type="text" name="itemName" placeholder="Enter Item Name" id="itemName"></div>
-        <div class="col2">
-          <select name="type" id="itemType">
-            <option value="Nutrition">Nutrition</option>
-            <option value="Medicine">Medicine</option>
-          </select>
-        </div>
-        <div class="col3"><input type="date" name="dateAdded" id="dateAdded"></div>
-        <div class="col4"><input type="date" name="expireDate" id="expireDate"></div>
-        <div id="addItem" class="col5"><input type="submit" value="Add Item"></div>
+      <div class="jumbotron">
+        <form>
+          <div class="row">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3">
+              <label for="item-name">Item Name</label>
+              <input type="text" class="form-control" name="item-name" id="itemName" placeholder="Item name" required>
+            </div>
+  
+            <div class="form-group col-sm-12 col-md-6 col-lg-3">
+              <label for="item-type">Item type</label>
+              <select id="itemType" name="item-type" class="form-control">
+                <option value="Nutrition" selected>Nutrition</option>
+                <option value="Medicine">Medicine</option>
+              </select>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-6 col-lg-3">
+              <label for="date-added">Date Added</label>
+              <input type="date" class="form-control" name="date-added" id="dateAdded" required>
+            </div>
+            
+            <div class="form-group col-sm-12 col-md-6 col-lg-3">
+              <label for="expiry-date">Expire Date</label>
+              <input type="date" class="form-control" name="expiry-date" id="expireDate" required>
+            </div>
+          </div>
+  
+          <div class="text-right">
+            <input type="submit" value="Add Item" id="addItem" class="btn btn-primary">
+          </div>
+        </form>
       </div>
     
       <!--Layout for settings container-->
