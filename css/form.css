@@ -6,51 +6,9 @@
   display: none;
 }
 
-/**CSS for the notificationDialog*/
-#notificationDialogContainer {
-  display: none;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.8);
-}
-
-#notificationDialog {
-  width: 70%;
-  border: 1px solid black;
-  border-radius: 3px;
-  background: rgb(255, 255, 255);
-  padding: 3%;
-  transform: translate(25%, 25%);
-}
-
 .buttonContainer {
 	display: flex;
 	justify-content: space-around;
-}
-
-#loginDialogContainer {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-}
-
-#loginDialog {
-  width: 70%;
-  border: 1px solid black;
-  border-radius: 3px;
-  background: white;
-  padding: 3%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 label {

@@ -5,10 +5,7 @@ document.getElementById("getStarted")
         if (user && !user.isAnonymous) {
             document.location.href = './views/form.html';
         } else {
-            var loginDialog = document.getElementById("loginDialogContainer");
-            loginDialog.style.display = "block";
-            // disable scrolling
-            document.body.style.overflow = "hidden";
+            $('#loginDialogContainer').modal('show');
         }
     });
 

@@ -40,10 +40,12 @@
           </li>
         </ul>
       </div>
-      <button class="btn btn-outline-success ml-auto" type="button" id="login">Login</button>
+      <button class="btn btn-outline-success ml-auto" type="button" id="login" data-toggle="modal"
+        data-target="#loginDialogContainer">Login</button>
       <button class="btn btn-outline-secondary ml-auto" type="button" id="logout">Logout</button>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
   </header>
@@ -51,7 +53,8 @@
   <main class="container">
     <div class="jumbotron">
       <h1 class="display-5">Hello, <span id="userName">there</span>!</h1>
-      <p class="lead">Please fill out this form with your information correctly to receive the best reference sheet ever!</p>
+      <p class="lead">Please fill out this form with your information correctly to receive the best reference sheet
+        ever!</p>
 
       <!--Layout for full name field-->
       <form action="" method="post">
@@ -67,7 +70,7 @@
             <input type="text" class="form-control" name="postalCode" id="postalCode" placeholder="VXX XXX" required>
           </div>
         </div>
-        
+
         <!--Layout for family size counter-->
         <div class="row">
           <div class="form-group col-sm-12 col-md-9">
@@ -105,14 +108,14 @@
               </label>
             </div>
           </div>
-          
+
           <!--Layout for Child counter-->
           <div class="form-group col-sm-12 col-md-3">
             <label for="children">Number of Children</label>
             <input type="number" class="form-control" value="0" name="childrenNo" id="children" min="0" max="9">
           </div>
         </div>
-        
+
         <!--Layout for medication selection-->
         <div class="row">
           <div class="form-group col-sm-12 col-md-6">
@@ -138,19 +141,19 @@
             </div>
           </div>
         </div>
-        
+
         <!--Layout for mobility selection-->
-          <div class="form-group col-sm-12 col-md-6">
-            <div>Do you own a pet?</div>
-            <div class="form-check form-check-inline">
-              <input type="radio" class="form-check-input" name="pet" id="petYes" value="yes">
-              <label class="form-check-label" for="petYes">Yes</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input type="radio" class="form-check-input" name="pet" id="petNo" value="no" checked>
-              <label class="form-check-label" for="petNo">No</label>
-            </div>
+        <div class="form-group col-sm-12 col-md-6">
+          <div>Do you own a pet?</div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="pet" id="petYes" value="yes">
+            <label class="form-check-label" for="petYes">Yes</label>
           </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="pet" id="petNo" value="no" checked>
+            <label class="form-check-label" for="petNo">No</label>
+          </div>
+        </div>
 
         <!--Container for submit button-->
         <div class="text-right">
@@ -160,28 +163,44 @@
     </div>
   </main>
 
-<!--  Layout for notification dialog-->
-  <div id="notificationDialogContainer">
-    <div id="notificationDialog">
-      <h2>Would you like to receive notifications?</h2>
-      <h3>Notifications can:</h3>
-      <li>Notify you when you need to update your emergency survival kit.</li>
-      <li>Notify you on possible actions to take during a disaster.</li>
-      <div class="buttonContainer mt-4">
-        <button type="button" id="notificationsButtonNo" class="btn btn-secondary">No</button>
-        <button type="button" id="notificationsButtonYes" class="btn btn-primary">Yes</button>
+  <!--  Layout for notification dialog-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="notificationDialogContainer">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Would you like to receive notifications?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h2>Would you like to receive notifications?</h2>
+          <h3>Notifications can:</h3>
+          <li>Notify you when you need to update your emergency survival kit.</li>
+          <li>Notify you on possible actions to take during a disaster.</li>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="notificationsButtonNo" class="btn btn-secondary">No</button>
+          <button type="button" id="notificationsButtonYes" class="btn btn-primary">Yes</button>
+        </div>
       </div>
     </div>
   </div>
 
-<!--  Layout for login dialog-->
-  <div id="loginDialogContainer">
-    <div id="loginDialog">
-      <h4 class="text-center mb-4">Login</h4>
-      <div id="firebaseui-auth-container"></div>
-      <div id="loader">Loading...</div>
-      <div class="text-center mt-4">
-        <button class="btn btn-secondary" id="closeLoginDialog">Close</button>
+  <!--  Layout for login dialog-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="loginDialogContainer">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="firebaseui-auth-container"></div>
+          <div id="loader">Loading...</div>
+        </div>
       </div>
     </div>
   </div>

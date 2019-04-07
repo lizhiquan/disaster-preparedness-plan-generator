@@ -8,27 +8,18 @@ $("#submit").click(function (e) {
     let userId = getUserId();
     if (userId != null) {
         saveFormDataToFirebaseDb(getFormData(), userId);
-        var notificationDialog = document.getElementById("notificationDialogContainer");
-        notificationDialog.style.display = "block";
-        return false;
+        $('#notificationDialogContainer').modal('show');
     } else {
         saveFormDataToLocalStorage(getFormData());
         document.location.href = "./reference-sheet.html";
     }
+    return false;
 });
 
 // Handle log out button's click event
 $("#logout").click(function (e) { 
     e.preventDefault();
     logout();
-    return false;
-});
-
-// Handle login button's click event
-$("#login").click(function (e) { 
-    e.preventDefault();
-    $("#loginDialogContainer").css("display", "block");
-    document.body.style.overflow = "hidden";
     return false;
 });
 
@@ -97,8 +88,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function closeLoginDialog() {
-    $("#loginDialogContainer").css("display", "none");
-    document.body.style.overflow = "auto";
+    $("#loginDialogContainer").modal('hide');
 }
 
 function logout() {
