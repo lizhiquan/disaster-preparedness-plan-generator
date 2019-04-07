@@ -60,13 +60,13 @@
       <form action="" method="post">
         <div class="row">
           <div class="form-group col-sm-12 col-md-6">
-            <label for="fullname">Full Name</label>
+            <label for="fullname" class="font-weight-bold">Full Name</label>
             <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full name" required>
           </div>
 
           <!--Layout for postal code field-->
           <div class="form-group col-sm-12 col-md-6">
-            <label for="postalCode">Postal Code</label>
+            <label for="postalCode" class="font-weight-bold">Postal Code</label>
             <input type="text" class="form-control" name="postalCode" id="postalCode" placeholder="VXX XXX" required>
           </div>
         </div>
@@ -74,7 +74,7 @@
         <!--Layout for family size counter-->
         <div class="row">
           <div class="form-group col-sm-12 col-md-9">
-            <label for="familySize">Household Size</label><br>
+            <label for="familySize" class="font-weight-bold">Household Size</label><br>
             <div class="btn-group d-flex btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-secondary active" id="familySize1">
                 <input type="radio" name="familySize" autocomplete="off" checked> 1
@@ -111,26 +111,15 @@
 
           <!--Layout for Child counter-->
           <div class="form-group col-sm-12 col-md-3">
-            <label for="children">Number of Children</label>
+            <label for="children" class="font-weight-bold">Number of Children</label>
             <input type="number" class="form-control" value="0" name="childrenNo" id="children" min="0" max="9">
           </div>
         </div>
 
-        <!--Layout for medication selection-->
         <div class="row">
-          <div class="form-group col-sm-12 col-md-6">
-            <div>Do you have any medication conditions?</div>
-            <select class="form-control" id="medication">
-              <option>None</option>
-              <option>Diabetes</option>
-              <option>Asthma</option>
-              <option>Cardiac attacks</option>
-            </select>
-          </div>
-
           <!--Layout for mobility selection-->
           <div class="form-group col-sm-12 col-md-6">
-            <div>Do you own a car?</div>
+            <div class="font-weight-bold">Do you own a car?</div>
             <div class="form-check form-check-inline">
               <input type="radio" class="form-check-input" name="mobility" id="mobilityYes" value="yes">
               <label class="form-check-label" for="mobilityYes">Yes</label>
@@ -140,18 +129,31 @@
               <label class="form-check-label" for="mobilityNo">No</label>
             </div>
           </div>
+
+          <!--Layout for mobility selection-->
+          <div class="form-group col-sm-12 col-md-6">
+            <div class="font-weight-bold">Do you own a pet?</div>
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-input" name="pet" id="petYes" value="yes">
+              <label class="form-check-label" for="petYes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-input" name="pet" id="petNo" value="no" checked>
+              <label class="form-check-label" for="petNo">No</label>
+            </div>
+          </div>
         </div>
 
-        <!--Layout for mobility selection-->
-        <div class="form-group col-sm-12 col-md-6">
-          <div>Do you own a pet?</div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" name="pet" id="petYes" value="yes">
-            <label class="form-check-label" for="petYes">Yes</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" name="pet" id="petNo" value="no" checked>
-            <label class="form-check-label" for="petNo">No</label>
+        <!--Layout for medication selection-->
+        <div class="row">
+          <div class="form-group col-sm-12 col-md-6">
+            <label for="medication" class="font-weight-bold">Do you have any medication conditions?</label>
+            <select name="medication" class="form-control" id="medication">
+              <option selected>None</option>
+              <option>Diabetes</option>
+              <option>Asthma</option>
+              <option>Cardiac attacks</option>
+            </select>
           </div>
         </div>
 
