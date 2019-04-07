@@ -92,8 +92,14 @@ function handleFormData(formData) {
 
 function generatePDF(checklists) {
     var doc = new jsPDF();
+    doc.setProperties({
+        title: 'Reference Sheet'
+    });
 
-    let body = checklists.map(x => [x.itemName, x.itemType, x.quantity]);
+    let generalBody = checklists.general
+        .map(x => [x.itemName, x.itemType, x.quantity]);
+    let petsBody = checklists.pets
+        .map(x => [x.itemName, x.itemType, x.quantity]);
 
     let finalY = 20;
     doc.text('Reference Sheet', 85, finalY);
@@ -105,39 +111,46 @@ function generatePDF(checklists) {
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: body
+        body: generalBody
     });
 
     finalY = doc.previousAutoTable.finalY + 10;
-    doc.text('Another Title', 16, finalY);
+    doc.text('Medication', 16, finalY);
 
     finalY = doc.previousAutoTable.finalY + 12;
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: body
+        body: generalBody
     });
 
     finalY = doc.previousAutoTable.finalY + 10;
-    doc.text('Another Title', 16, finalY);
+    doc.text('Car Emergency Kit', 16, finalY);
 
     finalY = doc.previousAutoTable.finalY + 12;
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: body
+        body: generalBody
     });
 
     finalY = doc.previousAutoTable.finalY + 10;
-    doc.text('Another Title', 16, finalY);
+    doc.text('Pets', 16, finalY);
 
     finalY = doc.previousAutoTable.finalY + 12;
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: body
+        body: petsBody
     });
 
-    var pdfBlob = doc.output('blob', 'DPPG.pdf');
-    $('#tab-1').attr('src', URL.createObjectURL(pdfBlob));
+    var pdfData = doc.output('datauri');
+    $('#tab-1').attr('src', pdfData);
+
+    // Handle download button's click event
+    $(".download-button").click(function (e) { 
+        e.preventDefault();
+        doc.save('reference-sheet.pdf');
+        return false;
+    });
 }

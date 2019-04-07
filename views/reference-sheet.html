@@ -54,8 +54,7 @@
     <!--Layout for Tabs-->
     <main class="container">
       <div class="nav nav-bar" id="buttonContainer">
-        <button id="dlBtn" class="btn btn-primary d-block d-sm-block d-md-none">Download As...</button>
-        <button id="saveBtn" class="btn btn-primary d-block d-sm-block d-md-none">Save As...</button>
+        <button class="btn btn-primary d-block d-sm-block d-md-none download-button">Download As...</button>
         <button class="buttonModify btn btn-primary d-block d-sm-block d-md-none">Modify Form</button>
       </div>
       <div id="tabContainer" class="outputmain">
@@ -68,15 +67,14 @@
               <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Lite version</a>
             </li>
             <!--Layout for Buttons-->
-            <button id="dlBtn" class="btn btn-primary ml-auto d-none d-md-block d-lg-block d-xl-block">Download As...</button>
-            <button id="saveBtn" class="btn btn-primary d-none d-lg-block d-md-block d-xl-block">Save As...</button>
+            <button class="btn btn-primary ml-auto d-none d-md-block d-lg-block d-xl-block download-button">Download As...</button>
             <button class="buttonModify btn btn-primary d-none d-md-block d-lg-block d-xl-block">Modify Form</button>
           </ul>
           <div class="tab-content d-flex" id="myTabContent">
             <!-- Tab 1 content -->
-            <iframe type="application/pdf" id="tab-1" class="referenceSheet tab-pane fade show active flex-grow-1" role="tabpanel" aria-labelledby="first-tab" src=""></iframe>
+            <iframe type="application/pdf" id="tab-1" class="referenceSheet tab-pane fade show active flex-grow-1" role="tabpanel" aria-labelledby="first-tab"></iframe>
             <!-- Tab 2 content -->
-            <p id="tab-2" class="referenceSheet tab-pane fade show" role="tabpanel" aria-labelledby="second-tab">Hello</p>
+            <p id="tab-2" class="referenceSheet tab-pane fade show" role="tabpanel" aria-labelledby="second-tab">Coming soon...</p>
           </div>
         </div>
       </div>
