@@ -38,6 +38,7 @@ var uiConfig = {
         firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
         // firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
+    credentialHelper: firebaseui.auth.CredentialHelper.NONE,
     // Terms of service url.
     tosUrl: '#',
     // Privacy policy url.

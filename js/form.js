@@ -63,6 +63,7 @@ var uiConfig = {
     signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
+    credentialHelper: firebaseui.auth.CredentialHelper.NONE,
     // Terms of service url.
     tosUrl: '#',
     // Privacy policy url.
