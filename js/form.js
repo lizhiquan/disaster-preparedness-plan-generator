@@ -2,16 +2,18 @@
 firebase.initializeApp(firebaseConfig);
 
 // Handle submit button's click event
-$("#submit").click(function (e) { 
+$("#submit").click(function (e) {
     e.preventDefault();
     
-    let userId = getUserId();
-    if (userId != null) {
-        saveFormDataToFirebaseDb(getFormData(), userId);
-        $('#notificationDialogContainer').modal('show');
-    } else {
-        saveFormDataToLocalStorage(getFormData());
-        document.location.href = "./reference-sheet.html";
+    if ($('#userForm').valid()) {
+        let userId = getUserId();
+        if (userId != null) {
+            saveFormDataToFirebaseDb(getFormData(), userId);
+            $('#notificationDialogContainer').modal('show');
+        } else {
+            saveFormDataToLocalStorage(getFormData());
+            document.location.href = "./reference-sheet.html";
+        }
     }
     return false;
 });
