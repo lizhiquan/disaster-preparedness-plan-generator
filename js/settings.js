@@ -11,6 +11,7 @@ $("#addItem").click(function (e) {
     } else {
         saveSettingsDataToLocalStorage(getSettingsData());
     }
+    clearSettingForm();
     return false;
 });
 
@@ -165,4 +166,10 @@ function removeFirebaseRecord(id) {
         .remove(() => {
             console.log('Delete successfully!');
         });
+}
+
+function clearSettingForm() {
+    $("#itemName").val('');
+    $("#dateAdded").val('');
+    $("#expireDate").val('');
 }
