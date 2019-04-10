@@ -106,9 +106,14 @@ function addItem(id, item) {
     let i2 = $("<td></td>").html(item.itemType);
     let i3 = $("<td></td>").html(item.dateAdded);
     let i4 = $("<td></td>").html(item.expireDate);
-    let deleteButton = $("<a href='#'></a>")
-        .addClass('material-icons float-right delete-button')
-        .text("delete");
+    let deleteButton = $("<button></button>")
+        .append($("<i class='material-icons'>delete</i>"))
+        .addClass('btn btn-link text-light float-right delete-button')
+        .attr('type', 'button')
+        .attr('data-toggle', 'modal')
+        .attr('data-target', '#confirmDeleteModal')
+        .attr('data-id', id)
+        .attr('data-name', item.itemName);
     let i5 = $("<td></td>").append(deleteButton);
     
     let table = $("#nutritionTable");
@@ -116,14 +121,23 @@ function addItem(id, item) {
         .attr('id', id)
         .append(i1, i2, i3, i4, i5);
     table.append(row);
+}
 
-    deleteButton.click(function (e) {
+$('#confirmDeleteModal').on('show.bs.modal', function (event) {
+    let button = $(event.relatedTarget);
+    let itemName = button.data('name');
+    let itemId = button.data('id');
+    let row = $("tr[id='" + itemId + "']");
+
+    let modal = $(this);
+    modal.find('.modal-item-name').text(itemName);
+    modal.find('#confirmDeleteYesButton').click(function (e) {
         e.preventDefault();
         row.remove();
-        removeFirebaseRecord(id);
-        return false;
+        removeFirebaseRecord(itemId);
+        modal.modal('hide');
     });
-}
+  })
 
 function updateHtmlTableValues(userSettings) {
     for (let id in userSettings) {

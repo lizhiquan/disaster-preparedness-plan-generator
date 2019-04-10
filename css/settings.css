@@ -17,10 +17,5 @@ body {
 }
 
 .delete-button:hover {
-  text-decoration: none;
-  color: red;
-}
-
-.delete-button {
-  color: white;
+  color: red !important;
 }
