@@ -13,3 +13,18 @@
 #buttonContainer {
   margin-bottom: 10pt;
 }
+
+body {
+  height: 100vh;
+  background-image: url(../img/imageedit_4_4908333100.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#mainContainer {
+  padding: 16px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
