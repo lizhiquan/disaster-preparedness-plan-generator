@@ -5,13 +5,15 @@ firebase.initializeApp(firebaseConfig);
 $("#addItem").click(function (e) {
     e.preventDefault();
 
-    let userId = getUserId();
-    if (userId != null) {
-        saveSettingsDataToFirebaseDb(generateRowID(), getSettingsData(), userId);
-    } else {
-        saveSettingsDataToLocalStorage(getSettingsData());
+    if ($('#addItemForm').valid()) {
+        let userId = getUserId();
+        if (userId != null) {
+            saveSettingsDataToFirebaseDb(generateRowID(), getSettingsData(), userId);
+        } else {
+            saveSettingsDataToLocalStorage(getSettingsData());
+        }
+        clearSettingForm();
     }
-    clearSettingForm();
     return false;
 });
 
