@@ -24,12 +24,15 @@
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   <script src="../js/secret.js"></script>
 
+  <!-- Material icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 
 <body>
   <!--Layout for navBar-->
   <header class="mb-4">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="../index.html">
         <img src="../resources/logo.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
       </a>
@@ -52,9 +55,10 @@
   </header>
 
   <main class="container">
-      <h1>Active Reminders</h1>
+      <div class="jumbotron my-4">
+        <h1>Active Reminders</h1>
+        <p class="lead">Description about this feature...</p>
 
-      <div class="jumbotron">
         <form>
           <div class="row">
             <div class="form-group col-sm-12 col-md-6 col-lg-3">
@@ -89,7 +93,7 @@
     
       <!--Layout for settings container-->
       <div id="tableContainer" class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover table-dark">
           <thead class="thead-dark">
             <tr>
               <th scope="col">Item Name</th>

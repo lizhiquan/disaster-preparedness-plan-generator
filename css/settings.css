@@ -7,3 +7,20 @@
   position: sticky;
   top: 0;
 }
+
+body {
+  height: 100vh;
+  background-image: url(../img/imageedit_4_4908333100.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.delete-button:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.delete-button {
+  color: white;
+}

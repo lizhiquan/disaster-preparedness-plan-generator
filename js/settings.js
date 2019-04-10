@@ -106,9 +106,10 @@ function addItem(id, item) {
     let i2 = $("<td></td>").html(item.itemType);
     let i3 = $("<td></td>").html(item.dateAdded);
     let i4 = $("<td></td>").html(item.expireDate);
-    let i5 = $("<button></button>")
-        .addClass('btn btn-danger')
-        .text("Delete");
+    let deleteButton = $("<a href='#'></a>")
+        .addClass('material-icons float-right delete-button')
+        .text("delete");
+    let i5 = $("<td></td>").append(deleteButton);
     
     let table = $("#nutritionTable");
     let row = $("<tr></tr>")
@@ -116,7 +117,7 @@ function addItem(id, item) {
         .append(i1, i2, i3, i4, i5);
     table.append(row);
 
-    i5.click(function (e) {
+    deleteButton.click(function (e) {
         e.preventDefault();
         row.remove();
         removeFirebaseRecord(id);
