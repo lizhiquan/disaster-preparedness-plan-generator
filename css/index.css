@@ -8,7 +8,6 @@ body {
 
 #getStarted {
   margin: 30px auto;
-  height: 10vh;
   font-size: 2rem;
 }
 
@@ -51,8 +50,11 @@ body {
   justify-content: center;
 }
 
-.card {}
-
 .card-text {
   color: red;
+}
+
+.card {
+  max-width: 16rem;
+  margin: auto;
 }

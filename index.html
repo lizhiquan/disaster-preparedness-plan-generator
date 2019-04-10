@@ -30,43 +30,49 @@
 <body>
   <div>
     <header>
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="background-color: #490505;">
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">
-          🏠 DPPG
+          <img src="./resources/logo.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
         </a>
 
-        <!-- Links -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="./views/form.html">🧾 Form</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">⚙️ Settings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">📄 Reference</a>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./views/form.html">🧾 Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">⚙️ Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">📄 Reference</a>
+            </li>
+          </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </nav>
     </header>
   </div>
-  <div class="container-fluid" id="mainBG">
-    <div class="header">Disaster Plan Generator</div>
+  
+  <div class="container" id="mainBG">
+    <div class="header text-center">Disaster Plan Generator</div>
     <div class="card-deck">
-      <div class="card" style="max-width: 16rem;">
+      <div class="card">
         <img class="card-img-top" src="./img/checklist-2077020_640.jpg" alt="Card image cap">
         <div class="card-body">
           <p class="card-text text-center">Generate a Checklist of Emergency Supplies </p>
         </div>
       </div>
-      <div class="card" style="max-width: 16rem;">
+      <div class="card">
         <img class="card-img-top" src="./img/kelly-sikkema-411622-unsplash.jpg" alt="Card image cap">
         <div class="card-body">
           <p class="card-text text-center">Set up Reminders for Expiring Supplies</p>
         </div>
       </div>
-      <div class="card" style="max-width: 16rem;">
+      <div class="card">
         <img class="card-img-top" src="./img/jehu-christan-751223-unsplash.jpg" alt="Card image cap">
         <div class="card-body">
           <p class="card-text text-center">Customized to your unique requirements.</p>
