@@ -39,7 +39,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         $("#login").css("display", "inherit");
         $("#logout").css("display", "none");
         $("#setting").css("display", "none");
-        generatePDF(getFormDataFromLocalStorage());
+        handleFormData(getFormDataFromLocalStorage());
     }
 });
 
@@ -81,7 +81,7 @@ function getChecklists() {
 }
 
 function handleFormData(formData) {
-// var row = 1;
+    // var row = 1;
     // for (let key in formData) {
     //     doc.text(key + ": " + formData[key], 20, row * 10 + 10);
     //     row++;
