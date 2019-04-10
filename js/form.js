@@ -96,6 +96,7 @@ function logout() {
     firebase.auth().signOut()
         .then(function() {
             // Sign-out successful.
+            clearForm();
         })
         .catch(function(error) {
             // An error happened
@@ -153,4 +154,15 @@ function updateHtmlFormValues(formData) {
     $("#medication").val(formData.medication);
     $("#mobilityYes").prop('checked', formData.mobility == 'yes');
     $("#petYes").prop('checked', formData.pet == 'yes');
+}
+
+function clearForm() {
+    $("#fullname").val('');
+    $("#userName").text('there');
+    $("#postalCode").val('');
+    $("#familySize1").button('toggle');
+    $("#children").val(0);
+    $("#medication").val('None');
+    $("#mobilityYes").prop('checked', false);
+    $("#petYes").prop('checked', false);
 }
