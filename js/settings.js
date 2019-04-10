@@ -140,8 +140,21 @@ $('#confirmDeleteModal').on('show.bs.modal', function (event) {
   })
 
 function updateHtmlTableValues(userSettings) {
-    for (let id in userSettings) {
-        let item = userSettings[id];
+    // Sort by item name
+    let list = [];
+    for (var id in userSettings) {
+        list.push([id, userSettings[id]]);
+    }
+    list.sort(function(a, b) {
+        var x = a[1].itemName;
+        var y = b[1].itemName;
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+    
+    for (let i in list) {
+        console.log(i);
+        let id = list[i][0];
+        let item = list[i][1];
         addItem(id, item);
     }
 };
