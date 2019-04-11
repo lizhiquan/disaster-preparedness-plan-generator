@@ -94,7 +94,7 @@ function generatePDF(formData, checklists) {
     doc.setProperties({ title: title });
 
     let generalBody = checklists.general
-        .map(x => [x.itemName, x.itemType, x.quantity]);
+        .map(x => [x.itemName, x.itemType, getQuantity(x.quantity, formData)]);
     let petsBody = checklists.pets
         .map(x => [x.itemName, x.itemType, x.quantity]);
 
@@ -168,4 +168,15 @@ function generatePDF(formData, checklists) {
         doc.save(title + '.pdf');
         return false;
     });
+}
+
+function getQuantity(val, formData) {
+    if (val == 'hSize') {
+        return formData.familySize;
+    } else if (val == 'waterQty') {
+        return (formData.familySize - formData.children / 2) * 4 + " litres";
+    } else if (val == 'foodQty') {
+        return formData.familySize - formData.children / 2;
+    }
+    return val;
 }
