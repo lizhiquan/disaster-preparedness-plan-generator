@@ -12,6 +12,15 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <!-- Form Progress Bar Stylesheet-->
+  <link rel="stylesheet" href="../css/formProgressBar.css">
+  
+  <!-- JQuery -->
+  <script
+    src="https://code.jquery.com/jquery-3.4.0.js"
+    integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+    crossorigin="anonymous"></script>
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
@@ -215,9 +224,15 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
+  <!-- Import Form Progress Bar JS--> 
+  <script src="../js/formProgressBar.jquery.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
   <script src="../js/form.js"></script>
+  <script>
+    $("form").formProgressBar();
+  </script>    
 </body>
 
 </html>
