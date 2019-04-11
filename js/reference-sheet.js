@@ -74,39 +74,48 @@ function getFormDataFromFirebaseDb(userId) {
     return dbRef.once('value');
 }
 
-function getChecklists() {
+function getChecklists(formData) {
     firebase.database().ref()
         .child('checklists')
         .once('value')
         .then((snapshot) => {
-            generatePDF(snapshot.val());
+            generatePDF(formData, snapshot.val());
         });
 }
 
 function handleFormData(formData) {
-    // var row = 1;
-    // for (let key in formData) {
-    //     doc.text(key + ": " + formData[key], 20, row * 10 + 10);
-    //     row++;
-    // }
-
-    getChecklists();
+    getChecklists(formData);
 }
 
 //Method for generating the custum disaster survival kit
-function generatePDF(checklists) {
-    var doc = new jsPDF();
-    doc.setProperties({
-        title: 'Reference Sheet'
-    });
+function generatePDF(formData, checklists) {
+    let doc = new jsPDF();
+    let title = formData.fullname + "'s Emergency Checklist";
+    doc.setProperties({ title: title });
 
     let generalBody = checklists.general
         .map(x => [x.itemName, x.itemType, x.quantity]);
     let petsBody = checklists.pets
         .map(x => [x.itemName, x.itemType, x.quantity]);
 
+    let medicationBody = null;
+    switch (formData.medication) {
+        case 'Asthma':
+            medicationBody = checklists.medication.asthma;
+            break;
+        case 'Diabetes':
+            medicationBody = checklists.medication.diabetes;
+            break;
+        case 'Cardiac attacks':
+            medicationBody = checklists.medication.heartAttacks;
+            break;
+    }
+    if (medicationBody != null ) {
+        medicationBody = medicationBody.map(x => [x.guidelines]);
+    }
+
     let finalY = 20;
-    doc.text('Reference Sheet', 85, finalY);
+    doc.text(title, 85, finalY);
 
     finalY += 10;
     doc.text('General Checklist', 16, finalY);
@@ -118,15 +127,17 @@ function generatePDF(checklists) {
         body: generalBody
     });
 
-    finalY = doc.previousAutoTable.finalY + 10;
-    doc.text('Medication', 16, finalY);
+    if (medicationBody != null) {
+        finalY = doc.previousAutoTable.finalY + 10;
+        doc.text('Medication', 16, finalY);
 
-    finalY = doc.previousAutoTable.finalY + 12;
-    doc.autoTable({
-        startY: finalY,
-        head: [['Item Name', 'Item Type', 'Quantity']],
-        body: generalBody
-    });
+        finalY = doc.previousAutoTable.finalY + 12;
+        doc.autoTable({
+            startY: finalY,
+            head: [['Guidelines']],
+            body: medicationBody
+        });
+    }
 
     finalY = doc.previousAutoTable.finalY + 10;
     doc.text('Car Emergency Kit', 16, finalY);
@@ -154,7 +165,7 @@ function generatePDF(checklists) {
     // Handle download button's click event
     $(".download-button").click(function (e) { 
         e.preventDefault();
-        doc.save('reference-sheet.pdf');
+        doc.save(title + '.pdf');
         return false;
     });
 }
