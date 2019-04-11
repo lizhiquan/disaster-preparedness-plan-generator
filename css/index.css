@@ -20,6 +20,13 @@ body {
   margin: auto;
 }
 
+#testimonyContainer {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding-bottom: 10pt;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
