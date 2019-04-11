@@ -95,8 +95,10 @@ function generatePDF(formData, checklists) {
 
     let generalBody = checklists.general
         .map(x => [x.itemName, x.itemType, getQuantity(x.quantity, formData)]);
+    let carBody = checklists.car
+        .map(x => [x.itemName, x.itemType, getQuantity(x.quantity, formData)]);
     let petsBody = checklists.pets
-        .map(x => [x.itemName, x.itemType, x.quantity]);
+        .map(x => [x.itemName, x.itemType, getQuantity(x.quantity, formData)]);
 
     let medicationBody = null;
     switch (formData.medication) {
@@ -146,7 +148,7 @@ function generatePDF(formData, checklists) {
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: generalBody
+        body: carBody
     });
 
     finalY = doc.previousAutoTable.finalY + 10;
