@@ -175,4 +175,6 @@ function clearForm() {
     $("#medication").val('None');
     $("#mobilityYes").prop('checked', false);
     $("#petYes").prop('checked', false);
+    $("#mobilityNo").prop('checked', true);
+    $("#petNo").prop('checked', true);
 }
