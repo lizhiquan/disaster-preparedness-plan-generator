@@ -64,7 +64,8 @@ function getFormDataFromLocalStorage() {
         familySize: storage.getItem("familySize"),
         children: storage.getItem("children"),
         medication: storage.getItem("medication"),
-        mobility: storage.getItem("mobility")
+        mobility: storage.getItem("mobility"),
+        pet: storage.getItem("pet")
     }
 }
 
@@ -110,8 +111,8 @@ function generatePDF(formData, checklists) {
         case 'Diabetes':
             medicationBody = checklists.medication.diabetes;
             break;
-        case 'Cardiac attacks':
-            medicationBody = checklists.medication.heartAttacks;
+        case 'Risk of Cardiac Events':
+            medicationBody = checklists.medication.heartAttack;
             break;
     }
     if (medicationBody != null ) {
