@@ -117,48 +117,58 @@ function generatePDF(formData, checklists) {
     }
 
     let finalY = 20;
-    doc.text(title, 85, finalY);
+    doc.setFontSize(20);
+    doc.text(title, 55, finalY);
 
     finalY += 10;
+    doc.setFontSize(16);
     doc.text('General Checklist', 16, finalY);
 
-    finalY += 2;
+    finalY += 5;
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: generalBody
+        body: generalBody,
+        headStyles: { fontSize: 12 },
+        bodyStyles: { fontSize: 11 }
     });
 
     if (medicationBody != null) {
         finalY = doc.previousAutoTable.finalY + 10;
         doc.text('Medication', 16, finalY);
 
-        finalY = doc.previousAutoTable.finalY + 12;
+        finalY = doc.previousAutoTable.finalY + 15;
         doc.autoTable({
             startY: finalY,
             head: [['Guidelines']],
-            body: medicationBody
+            body: medicationBody,
+            headStyles: { fontSize: 12 },
+            bodyStyles: { fontSize: 11 }
         });
     }
 
     finalY = doc.previousAutoTable.finalY + 10;
     doc.text('Car Emergency Kit', 16, finalY);
 
-    finalY = doc.previousAutoTable.finalY + 12;
+    finalY = doc.previousAutoTable.finalY + 15;
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: carBody
+        body: carBody,
+        headStyles: { fontSize: 12 },
+        bodyStyles: { fontSize: 11 }
     });
 
     finalY = doc.previousAutoTable.finalY + 10;
     doc.text('Pets', 16, finalY);
 
-    finalY = doc.previousAutoTable.finalY + 12;
+    finalY = doc.previousAutoTable.finalY + 15;
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: petsBody
+        body: petsBody,
+        headStyles: { fontSize: 12 },
+        bodyStyles: { fontSize: 11 }
     });
 
     var pdfData = doc.output('datauri');
