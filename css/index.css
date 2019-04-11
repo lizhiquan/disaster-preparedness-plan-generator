@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:800');
+
+
 body {
   height: 100vh;
-  background-image: url(../img/imageedit_4_4908333100.jpg);
+  background-image: url(../img/dust_scratches.png);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -27,6 +30,7 @@ body {
 }
 
 .header {
+  font-family: 'Exo 2', sans-serif;
   font-size: 32pt;
   color: white;
   background: rgb(32, 32, 32, 0.8);
@@ -37,13 +41,11 @@ body {
   /* Firefox < 16 */
   animation: fadein 2s;
   margin: 100px auto 50px auto;
-  filter: drop-shadow(12px 12px 16px rgb(114, 4, 4));
 }
 
 .card-img-top {
   height: 30vh;
   object-fit: cover;
-  filter: grayscale(100%);
 }
 
 .card-deck {
@@ -51,7 +53,6 @@ body {
 }
 
 .card-text {
-  color: red;
 }
 
 .card {
