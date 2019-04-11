@@ -104,6 +104,7 @@ function generatePDF(formData, checklists) {
         .map(x => [x.itemName, x.itemType, getQuantity(x.quantity, formData)]);
 
     let medicationBody = null;
+    let medicationName = 'Medication - ' + formData.medication;
     switch (formData.medication) {
         case 'Asthma':
             medicationBody = checklists.medication.asthma;
@@ -138,7 +139,7 @@ function generatePDF(formData, checklists) {
 
     if (medicationBody != null) {
         finalY = doc.previousAutoTable.finalY + 10;
-        doc.text('Medication', 16, finalY);
+        doc.text(medicationName, 16, finalY);
 
         finalY = doc.previousAutoTable.finalY + 15;
         doc.autoTable({
