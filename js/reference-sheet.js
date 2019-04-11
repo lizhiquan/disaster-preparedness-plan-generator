@@ -43,7 +43,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
-//Functoin for logging out the user
+// Logging out the current user
 function logout() {
     firebase.auth().signOut()
         .then(function() {
@@ -54,7 +54,7 @@ function logout() {
         });
 }
 
-//Function for getting the form data from local storage
+// Getting the form data from local storage
 function getFormDataFromLocalStorage() {
     var storage = window.localStorage;
 
@@ -68,12 +68,13 @@ function getFormDataFromLocalStorage() {
     }
 }
 
-//Function for grabbing data from Firebase
+// Fetching data from firebase
 function getFormDataFromFirebaseDb(userId) {
     let dbRef = firebase.database().ref('forms/' + userId);
     return dbRef.once('value');
 }
 
+// Fetching checklist from firebase
 function getChecklists(formData) {
     firebase.database().ref()
         .child('checklists')
@@ -83,11 +84,12 @@ function getChecklists(formData) {
         });
 }
 
+// Handles user form data
 function handleFormData(formData) {
     getChecklists(formData);
 }
 
-//Method for generating the custum disaster survival kit
+// Generates the custom disaster survival kit
 function generatePDF(formData, checklists) {
     let doc = new jsPDF();
     let title = formData.fullname + "'s Emergency Checklist";
@@ -186,6 +188,7 @@ function generatePDF(formData, checklists) {
     });
 }
 
+// Mapping variables form checklist to real values
 function getQuantity(val, formData) {
     if (val == 'hSize') {
         return formData.familySize;
