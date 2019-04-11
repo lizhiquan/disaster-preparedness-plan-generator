@@ -43,7 +43,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
-//Functoin for logging out the user
+// Logging out the current user
 function logout() {
     firebase.auth().signOut()
         .then(function() {
@@ -54,7 +54,7 @@ function logout() {
         });
 }
 
-//Function for getting the form data from local storage
+// Getting the form data from local storage
 function getFormDataFromLocalStorage() {
     var storage = window.localStorage;
 
@@ -68,12 +68,13 @@ function getFormDataFromLocalStorage() {
     }
 }
 
-//Function for grabbing data from Firebase
+// Fetching data from firebase
 function getFormDataFromFirebaseDb(userId) {
     let dbRef = firebase.database().ref('forms/' + userId);
     return dbRef.once('value');
 }
 
+// Fetching checklist from firebase
 function getChecklists(formData) {
     firebase.database().ref()
         .child('checklists')
@@ -83,11 +84,12 @@ function getChecklists(formData) {
         });
 }
 
+// Handles user form data
 function handleFormData(formData) {
     getChecklists(formData);
 }
 
-//Method for generating the custum disaster survival kit
+// Generates the custom disaster survival kit
 function generatePDF(formData, checklists) {
     let doc = new jsPDF();
     let title = formData.fullname + "'s Emergency Checklist";
@@ -108,7 +110,7 @@ function generatePDF(formData, checklists) {
         case 'Diabetes':
             medicationBody = checklists.medication.diabetes;
             break;
-        case 'Risk of Cardiac Events':
+        case 'Cardiac attacks':
             medicationBody = checklists.medication.heartAttacks;
             break;
     }
@@ -117,49 +119,63 @@ function generatePDF(formData, checklists) {
     }
 
     let finalY = 20;
-    doc.text(title, 85, finalY);
+    doc.setFontSize(20);
+    doc.text(title, 55, finalY);
 
     finalY += 10;
+    doc.setFontSize(16);
     doc.text('General Checklist', 16, finalY);
 
-    finalY += 2;
+    finalY += 5;
     doc.autoTable({
         startY: finalY,
         head: [['Item Name', 'Item Type', 'Quantity']],
-        body: generalBody
+        body: generalBody,
+        headStyles: { fontSize: 12 },
+        bodyStyles: { fontSize: 11 }
     });
 
     if (medicationBody != null) {
         finalY = doc.previousAutoTable.finalY + 10;
         doc.text('Medication', 16, finalY);
 
-        finalY = doc.previousAutoTable.finalY + 12;
+        finalY = doc.previousAutoTable.finalY + 15;
         doc.autoTable({
             startY: finalY,
             head: [['Guidelines']],
-            body: medicationBody
+            body: medicationBody,
+            headStyles: { fontSize: 12 },
+            bodyStyles: { fontSize: 11 }
         });
     }
 
-    finalY = doc.previousAutoTable.finalY + 10;
-    doc.text('Car Emergency Kit', 16, finalY);
+    if (formData.mobility == 'yes') {
+        finalY = doc.previousAutoTable.finalY + 10;
+        doc.text('Car Emergency Kit', 16, finalY);
 
-    finalY = doc.previousAutoTable.finalY + 12;
-    doc.autoTable({
-        startY: finalY,
-        head: [['Item Name', 'Item Type', 'Quantity']],
-        body: carBody
-    });
+        finalY = doc.previousAutoTable.finalY + 15;
+        doc.autoTable({
+            startY: finalY,
+            head: [['Item Name', 'Item Type', 'Quantity']],
+            body: carBody,
+            headStyles: { fontSize: 12 },
+            bodyStyles: { fontSize: 11 }
+        });
+    }
 
-    finalY = doc.previousAutoTable.finalY + 10;
-    doc.text('Pets', 16, finalY);
+    if (formData.pet == 'yes') {
+        finalY = doc.previousAutoTable.finalY + 10;
+        doc.text('Pets', 16, finalY);
 
-    finalY = doc.previousAutoTable.finalY + 12;
-    doc.autoTable({
-        startY: finalY,
-        head: [['Item Name', 'Item Type', 'Quantity']],
-        body: petsBody
-    });
+        finalY = doc.previousAutoTable.finalY + 15;
+        doc.autoTable({
+            startY: finalY,
+            head: [['Item Name', 'Item Type', 'Quantity']],
+            body: petsBody,
+            headStyles: { fontSize: 12 },
+            bodyStyles: { fontSize: 11 }
+        });
+    }
 
     var pdfData = doc.output('datauri');
     $('#tab-1').attr('src', pdfData);
@@ -172,6 +188,7 @@ function generatePDF(formData, checklists) {
     });
 }
 
+// Mapping variables form checklist to real values
 function getQuantity(val, formData) {
     if (val == 'hSize') {
         return formData.familySize;
