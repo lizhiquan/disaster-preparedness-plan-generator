@@ -59,14 +59,13 @@
   <main class="container">
     <div class="jumbotron">
       <h1 class="display-5">Hello, <span id="userName">there</span>!</h1>
-      <p class="lead">Please fill out this form with your information correctly to receive the best reference sheet
-        ever!</p>
+      <p class="lead">Please fill out this form as accurately as possible to receive your household's customized emergency supplies checklist!</p>
 
       <!--Layout for full name field-->
       <form id="userForm">
         <div class="row">
           <div class="form-group col-sm-12 col-md-6">
-            <label for="fullname" class="font-weight-bold">Full Name</label>
+            <label for="fullname" class="font-weight-bold">Name</label>
             <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full name" required>
           </div>
 
@@ -125,7 +124,7 @@
         <div class="row">
           <!--Layout for mobility selection-->
           <div class="form-group col-sm-12 col-md-6">
-            <div class="font-weight-bold">Do you own a car?</div>
+            <div class="font-weight-bold">Do you own a Car?</div>
             <div class="form-check form-check-inline">
               <input type="radio" class="form-check-input" name="mobility" id="mobilityYes" value="yes">
               <label class="form-check-label" for="mobilityYes">Yes</label>
@@ -138,7 +137,7 @@
 
           <!--Layout for mobility selection-->
           <div class="form-group col-sm-12 col-md-6">
-            <div class="font-weight-bold">Do you own a pet?</div>
+            <div class="font-weight-bold">Do you own a Pet?</div>
             <div class="form-check form-check-inline">
               <input type="radio" class="form-check-input" name="pet" id="petYes" value="yes">
               <label class="form-check-label" for="petYes">Yes</label>
@@ -153,12 +152,12 @@
         <!--Layout for medication selection-->
         <div class="row">
           <div class="form-group col-sm-12 col-md-6">
-            <label for="medication" class="font-weight-bold">Do you have any medication conditions?</label>
+            <label for="medication" class="font-weight-bold">Do you suffer from any of these chronic conditions?</label>
             <select name="medication" class="form-control" id="medication">
               <option selected>None</option>
               <option>Diabetes</option>
               <option>Asthma</option>
-              <option>Cardiac attacks</option>
+              <option>Risk of Cardiac Events</option>
             </select>
           </div>
         </div>
