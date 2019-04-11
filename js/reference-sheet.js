@@ -147,29 +147,33 @@ function generatePDF(formData, checklists) {
         });
     }
 
-    finalY = doc.previousAutoTable.finalY + 10;
-    doc.text('Car Emergency Kit', 16, finalY);
+    if (formData.mobility == 'yes') {
+        finalY = doc.previousAutoTable.finalY + 10;
+        doc.text('Car Emergency Kit', 16, finalY);
 
-    finalY = doc.previousAutoTable.finalY + 15;
-    doc.autoTable({
-        startY: finalY,
-        head: [['Item Name', 'Item Type', 'Quantity']],
-        body: carBody,
-        headStyles: { fontSize: 12 },
-        bodyStyles: { fontSize: 11 }
-    });
+        finalY = doc.previousAutoTable.finalY + 15;
+        doc.autoTable({
+            startY: finalY,
+            head: [['Item Name', 'Item Type', 'Quantity']],
+            body: carBody,
+            headStyles: { fontSize: 12 },
+            bodyStyles: { fontSize: 11 }
+        });
+    }
 
-    finalY = doc.previousAutoTable.finalY + 10;
-    doc.text('Pets', 16, finalY);
+    if (formData.pet == 'yes') {
+        finalY = doc.previousAutoTable.finalY + 10;
+        doc.text('Pets', 16, finalY);
 
-    finalY = doc.previousAutoTable.finalY + 15;
-    doc.autoTable({
-        startY: finalY,
-        head: [['Item Name', 'Item Type', 'Quantity']],
-        body: petsBody,
-        headStyles: { fontSize: 12 },
-        bodyStyles: { fontSize: 11 }
-    });
+        finalY = doc.previousAutoTable.finalY + 15;
+        doc.autoTable({
+            startY: finalY,
+            head: [['Item Name', 'Item Type', 'Quantity']],
+            body: petsBody,
+            headStyles: { fontSize: 12 },
+            bodyStyles: { fontSize: 11 }
+        });
+    }
 
     var pdfData = doc.output('datauri');
     $('#tab-1').attr('src', pdfData);
