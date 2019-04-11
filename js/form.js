@@ -94,6 +94,7 @@ function closeLoginDialog() {
     $("#loginDialogContainer").modal('hide');
 }
 
+//Function for logging out the user
 function logout() {
     firebase.auth().signOut()
         .then(function() {
@@ -106,6 +107,13 @@ function logout() {
         });
 }
 
+//Support function for getting the user ID
+function getUserId() {
+    let user = firebase.auth().currentUser;
+    return (user && !user.isAnonymous) ? user.uid : null;
+}
+
+//Function for getting the form data
 function getFormData() {
     return {
         fullname: $("#fullname").val(),
@@ -118,18 +126,7 @@ function getFormData() {
     };
 }
 
-function getUserId() {
-    let user = firebase.auth().currentUser;
-    return (user && !user.isAnonymous) ? user.uid : null;
-}
-
-function saveFormDataToLocalStorage(formData) {
-    var storage = window.localStorage;
-    for (let key in formData) {
-        storage.setItem(key, formData[key]);
-    }
-}
-
+//Function for saving the form data we got to Firebase
 function saveFormDataToFirebaseDb(formData, userId) {
     if (userId == null) {
         return;
@@ -139,6 +136,15 @@ function saveFormDataToFirebaseDb(formData, userId) {
     return firebase.database().ref().update(updates);
 }
 
+//Function for saving the form data to local storage
+function saveFormDataToLocalStorage(formData) {
+    var storage = window.localStorage;
+    for (let key in formData) {
+        storage.setItem(key, formData[key]);
+    }
+}
+
+//Function for grabbing the data from Firebase
 function fetchFormData(userId) {
     let dbRef = firebase.database().ref('forms/' + userId);
     dbRef.once('value', (snap) => {
@@ -147,6 +153,7 @@ function fetchFormData(userId) {
     });
 }
 
+//Function for updating the form with data from Firebase
 function updateHtmlFormValues(formData) {
     $("#fullname").val(formData.fullname);
     $("#userName").text(formData.fullname);
@@ -158,6 +165,7 @@ function updateHtmlFormValues(formData) {
     $("#petYes").prop('checked', formData.pet == 'yes');
 }
 
+//Function for clearing the form when the user logs out
 function clearForm() {
     $("#fullname").val('');
     $("#userName").text('there');

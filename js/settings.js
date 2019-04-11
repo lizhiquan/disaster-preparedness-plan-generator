@@ -35,6 +35,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
+//Function for logging out the user from Firebase
 function logout() {
     firebase.auth().signOut()
         .then(function () {
@@ -47,6 +48,7 @@ function logout() {
         });
 }
 
+//Function for getting the user's current setting
 function getSettingsData() {
     return {
         itemName: $("#itemName").val(),
@@ -56,11 +58,13 @@ function getSettingsData() {
     };
 }
 
+//Function for getting the user's ID
 function getUserId() {
     let user = firebase.auth().currentUser;
     return (user && !user.isAnonymous) ? user.uid : null;
 }
 
+//Function for saving settings to local storage
 function saveSettingsDataToLocalStorage(settingsData) {
     var storage = window.localStorage;
     for (let key in settingsData) {
@@ -68,6 +72,7 @@ function saveSettingsDataToLocalStorage(settingsData) {
     }
 }
 
+//Function for saving settints to Firebase
 function saveSettingsDataToFirebaseDb(id, settingsData, userId) {
     if (userId == null) {
         return;
@@ -95,6 +100,7 @@ function fetchSettingsData(userId) {
     });
 }
 
+//Function for getting the a copy of the user's Setting from FireBase
 function fetchCurrentUserSettings() {
     firebase.database().ref("settings")
         .child(getUserId())
@@ -104,6 +110,7 @@ function fetchCurrentUserSettings() {
         });
 }
 
+//Function for adding an item to the user's Setting page
 function addItem(id, item) {
     let i1 = $("<td scope='row'></td>").html(item.itemName);
     let i2 = $("<td></td>").html(item.itemType);
@@ -142,6 +149,7 @@ $('#confirmDeleteModal').on('show.bs.modal', function (event) {
     });
   })
 
+//Function for updating the talbe in Settings
 function updateHtmlTableValues(userSettings) {
     // Sort by item name
     let list = [];
@@ -162,6 +170,7 @@ function updateHtmlTableValues(userSettings) {
     }
 };
 
+//Function for removing the item from FireBase
 function removeFirebaseRecord(id) {
     console.log(id);
     firebase.database().ref("settings/" + getUserId() + "/" + id)
@@ -170,6 +179,7 @@ function removeFirebaseRecord(id) {
         });
 }
 
+//Function for clearing the setting form
 function clearSettingForm() {
     $("#itemName").val('');
     $("#dateAdded").val('');

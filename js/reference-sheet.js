@@ -43,6 +43,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
+//Functoin for logging out the user
 function logout() {
     firebase.auth().signOut()
         .then(function() {
@@ -53,6 +54,7 @@ function logout() {
         });
 }
 
+//Function for getting the form data from local storage
 function getFormDataFromLocalStorage() {
     var storage = window.localStorage;
 
@@ -66,6 +68,7 @@ function getFormDataFromLocalStorage() {
     }
 }
 
+//Function for grabbing data from Firebase
 function getFormDataFromFirebaseDb(userId) {
     let dbRef = firebase.database().ref('forms/' + userId);
     return dbRef.once('value');
@@ -90,6 +93,7 @@ function handleFormData(formData) {
     getChecklists();
 }
 
+//Method for generating the custum disaster survival kit
 function generatePDF(checklists) {
     var doc = new jsPDF();
     doc.setProperties({
